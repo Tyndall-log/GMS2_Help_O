@@ -1,0 +1,1023 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>Sequences</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/3_scripting/4_gml_reference/sequences/index.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Fsequences%2Findex.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Fsequences%2Findex.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>Sequences</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p>Sequences are usually created in the IDE using the <a href=
+"../../../2_interface/1_editors/sequences.html">Sequence
+editor</a>, but they can also be created and edited using code.
+However, before looking at the functions available, it's important
+to understand the way that sequences are defined in GameMaker and
+the different terms that will be used.</p>
+
+<p>To start with, at the top level, you have a <b>sequence
+element</b>. This is what you place on a layer in a room, either
+through the Room Editor or in code using the appropriate <a href=
+"../rooms/sequences/index.html">layer functions</a>. The layer
+element has no real properties other than an element ID value, but
+this ID is required to use the above mentioned layer functions to
+change the sequence playback or to access the sequence data.</p>
+
+<p>Next you have <b>sequence objects</b> and <b>sequence
+instances</b> much like you have general objects and instances. A
+sequence <i>object</i> is the base resource as you created it in
+the <b>Asset Browser</b> or using the function <a href=
+"sequence_create.html"><tt>sequence_create()</tt></a>, and the
+sequence <i>instance</i> is the "copy" of that sequence object that
+has been placed in a room as an element on a layer. Think of
+sequence objects as blueprints and sequence instances as the
+creation from those blueprints. Sequence objects and instances are
+<a href="../../3_gml_overview/11_structs.html">structs</a> and -
+unlike regular objects - a sequence object struct can be edited at
+runtime, which will affect all further instances of that sequence
+when you create them as elements (and any editing done to a
+sequence object will <b>not</b> be reset by restarting the game or
+the room using the <tt>room_restart()</tt> or
+<tt>game_restart()</tt> functions). The sequence instance struct
+contains a few parameters to control playback and things (this is
+explained in more detail below) as well as the <b>sequence data</b>
+struct.</p>
+
+<p>Finally, as mentioned above, you have the <b>sequence data</b>,
+which is another struct. This struct contains <i>all</i> the data
+about the sequence. The tracks it contains, the propertys those
+tracks have, the playback speed and much more. The exact details of
+this structs contents are outlined below, but basically consists of
+<b>asset track</b> structs and <b>parameter track</b> structs which
+use <b>keyframe data</b> to actually perform actions while the
+sequence plays.</p>
+
+<p>Sequence elements are dealt with using the room <a href=
+"../rooms/sequences/index.html">layer functions</a>, but for
+sequence objects, instances and data we have the following
+functions:</p>
+
+<div class="index_list">
+<ul>
+<li><a href="sequence_exists.html">sequence_exists</a>
+</li>
+
+<li><a href="sequence_create.html">sequence_create</a>
+</li>
+
+<li><a href="sequence_destroy.html">sequence_destroy</a>
+</li>
+
+<li><a href="sequence_get.html">sequence_get</a>
+</li>
+
+<li><a href="sequence_track_new.html">sequence_track_new</a>
+</li>
+
+<li><a href="sequence_keyframe_new.html">sequence_keyframe_new</a>
+</li>
+
+<li><a href=
+"sequence_keyframedata_new.html">sequence_keyframedata_new</a>
+</li>
+
+<li><a href="sequence_get_objects.html">sequence_get_objects</a>
+</li>
+
+<li><a href=
+"sequence_instance_override_object.html">sequence_instance_override_object</a>
+</li>
+</ul>
+</div>
+
+<p>Before using these functions to create or edit sequences, we
+recommend that you read the detailed descriptions given below for
+the struct properties. A general overview of how to create a new
+sequence would be:</p>
+
+<ul>
+<li>Create the new sequence object using the function <a href=
+"sequence_create.html"><tt>seqeunce_create()</tt></a> and store the
+sequence object index in a variable. This index gives you access to
+the sequence object struct.<br>
+<br>
+
+<p class="code">myseq = sequence_create();</p>
+<br>
+<br></li>
+
+<li>Set the sequence object top level values like length, play
+mode, play speed, etc... For example:<br>
+<br>
+
+<p class="code">myseq.length = 120;<br>
+myseq.loopmode = seqplay_pingpong<br></p>
+<br>
+<br></li>
+
+<li>Before you can add tracks to the sequence object, you need to
+create them, so you'd now create an array of <i>asset</i> tracks
+that have been defined with the function <a href=
+"sequence_track_new.html"><tt>sequence_track_new()</tt></a>. Note
+that in code, there is really no difference between asset tracks
+and parameter tracks - they are all simply tracks and how they
+behave will depend on the type od track you create and whether they
+are assigned as sub-tracks to a top level track or not. So, you
+would create a track for an asset, and then assign sub-tracks for
+the different parameters to it and these sub-tracks would act as
+the <i>parameter</i> tracks for the asset. The example below
+creates a single graphics asset track that will be added to the
+sequence later:<br>
+<br>
+
+<p class="code">var mytracks = array_create(1);<br>
+mytracks[0] = sequence_track_new(seqtracktype_graphic);<br></p>
+<br>
+<br></li>
+
+<li>Each asset track needs to have some data to tell the sequence
+how it will look, or its position , etc... and this is added in the
+form of <i>keyframes</i>. At the top level for an asset track, you
+can set keyframes for various things (listed in the section on the
+Track Struct, below), but note that as these are asset track
+keyframes, they won't be interpolated and will simply change the
+value they refer to when the given frame is reached. Each keyframe
+is a struct that is added to an array, and then this array is
+assigned to the asset track. To create the keyframe struct we would
+call the function <a href=
+"sequence_keyframe_new.html"><tt>sequence_keyframe_new</tt></a> and
+to populate the keyframe with the required data, we would use the
+function <a href=
+"sequence_keyframedata_new.html"><tt>sequence_keyframedata_new</tt></a>:<br>
+
+<br>
+
+<p class="code">// Create a new keyframe struct for a graphics
+asset track and add it to an array (as you can have multiple keys
+in a frame)<br>
+var graphickeys = array_create(1);<br>
+graphickeys[0] = sequence_keyframe_new(seqtracktype_graphic);<br>
+// Set the graphics keyframe top level data for the keyframe
+position and length, etc...<br>
+graphickeys[0].frame = 0;<br>
+graphickeys[0].length = 1;<br>
+graphickeys[0].stretch = true;<br>
+graphickeys[0].disabled = false;<br>
+// Create the channel data that will go into this keyframe (again
+an array, as each key can have multiple channels of keyframe
+data)<br>
+var graphickeydata = array_create(1);<br>
+graphickeydata[0] =
+sequence_keyframedata_new(seqtracktype_graphic);<br>
+graphickeydata[0].spriteIndex = spr_Platform;<br>
+graphickeydata[0].channel = 0;<br>
+// Add the keyframe data channels to the graphics track
+keyframe<br>
+graphickeys[0].channels = graphickeydata;<br>
+// Add the definied keyframes to the track<br>
+mytracks[0].name = "TestGraphicTrack";<br>
+mytracks[0].keyframes = graphickeys;<br></p>
+<br>
+<br></li>
+
+<li>We now need to create a parameter track which we'll assign as a
+sub-track to the graphics track we just created. This will be done
+in a similar way as shown above, only now we need to give the track
+a name that shows its purpose, in this case "position" as we'll be
+using this track to move the graphics track track over the course
+of the sequence animation frames:<br>
+<br>
+
+<p class="code">// Create a new parameter track struct for the
+position of the graphic<br>
+var paramtracks = array_create(1);<br>
+paramtracks[0] = sequence_track_new(seqtracktype_real);<br>
+paramtracks[0].name = "position";<br>
+paramtracks[0].interpolation = true;<br>
+// Create the keyframe struct to hold the parameter channel data
+and set the frame position for the keyframe<br>
+var paramkeys = array_create(2);<br>
+paramkeys[0] = sequence_keyframe_new(seqtracktype_real);<br>
+paramkeys[0].frame = 0;<br>
+paramkeys[1] = sequence_keyframe_new(seqtracktype_real);<br>
+paramkeys[1].frame = 120;<br>
+// Create the keyframe data structs<br>
+var paramkeydata1 = array_create(2);<br>
+paramkeydata1[0] =
+sequence_keyframedata_new(seqtracktype_real);<br>
+paramkeydata1[0].channel = 0; // Channel 0 for a position track is
+the X position<br>
+paramkeydata1[0].value = 0;<br>
+paramkeydata1[1] =
+sequence_keyframedata_new(seqtracktype_real);<br>
+paramkeydata1[1].channel = 1; // Channel 1 for a position track is
+the Y position<br>
+paramkeydata1[1].value = 0;<br>
+var paramkeydata2 = array_create(2);<br>
+paramkeydata2[0] =
+sequence_keyframedata_new(seqtracktype_real);<br>
+paramkeydata2[0].channel = 0;<br>
+paramkeydata2[0].value = room_width;<br>
+paramkeydata2[1] =
+sequence_keyframedata_new(seqtracktype_real);<br>
+paramkeydata2[1].channel = 1;<br>
+paramkeydata2[1].value = room_height;<br>
+// Assign the keyframe data structs to the channels for each
+key<br>
+paramkeys[0].channels = paramkeydata1;<br>
+paramkeys[1].channels = paramkeydata2;<br>
+// Assign the keys to the parameter track<br>
+paramtracks[0].keyframes = paramkeys;<br></p>
+<br>
+<br></li>
+
+<li>With that done, the final thing to do is assign the parameter
+track as a sub-track to our main graphics asset track that we
+created at the beginning and then assign these tracks to the
+sequence which we can then create an instance of in the room:<br>
+<br>
+
+<p class="code">mytracks[0].tracks = paramtracks;<br>
+myseq.tracks = mytracks;<br>
+layer_sequence_create("Assets_1", 0, 0, myseq);<br></p></li>
+</ul>
+
+<p>The above instructions create a very simple sequence object that
+draws a sprite at the (0, 0) position <i>of the sequence</i> and
+then move it to the bottom-right corner and back in a loop. As
+mentioned, there are a number of places where you need to access
+different structs to give or get data about the sequence, and the
+sections below list all the different properties that these structs
+contain:</p>
+
+<blockquote><a name="object" id="object"></a> <label class=
+"collapse" for="1">The Sequence Object Struct</label> <input id="1"
+type="checkbox">
+<div class="index_list">
+<p>A sequence object is a struct with the following properties:</p>
+
+<ul>
+<li><tt>name</tt>: This is the name of the sequence as a string and
+you can get or set this value as required. Note that sequences
+created using the function <a href=
+"sequence_create.html"><tt>sequence_create()</tt></a> will not have
+a name and this will simply be an empty string "".<br>
+<br></li>
+
+<li><tt>loopmode</tt>: This is the playback mode of the sequence
+object and can be get or set. It will return (or can be set to) the
+following constants:
+
+<div class="compat">
+<table>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td><tt>seqplay_oneshot</tt>
+</td>
+<td>The sequence will play once then stop when finished.</td>
+<td>0</td>
+</tr>
+
+<tr class="alt">
+<td><tt>seqplay_loop</tt>
+</td>
+<td>The sequence will loop, with the playhead going back to the
+start when it reaches the end of the playback region.</td>
+<td>1</td>
+</tr>
+
+<tr>
+<td><tt>seqplay_pingpong</tt>
+</td>
+<td>The sequence will loop, with the playhead reversing direction
+when it reaches the end of the playback region.</td>
+<td>2</td>
+</tr>
+</table>
+</div>
+<br>
+<br></li>
+
+<li><tt>playbackSpeed</tt>: This specifies the playback speed of
+the sequence, which is interpreted as either frames-per-second or
+frames-per-game-frame depending on the <tt>playbackSpeedType</tt>
+(see below). You can get or set this value.<br>
+<br></li>
+
+<li><tt>playbackSpeedType</tt>: This specifies how the
+<tt>playbackSpeed</tt> should be interpreted and you can get or set
+this value. You can use one of the following constants to set the
+value (or one of these constants will be returned if checking the
+property):
+
+<div class="compat">
+<table>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td><tt>spritespeed_framespersecond</tt>
+</td>
+<td>Specifies that <tt>playbackSpeed</tt> should be interpreted as
+frames-per-second</td>
+<td>0</td>
+</tr>
+
+<tr class="alt">
+<td><tt>spritespeed_framespergameframe</tt>
+</td>
+<td>Specifies that <tt>playbackSpeed</tt> should be interpreted as
+frames-per-game-frame.</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+<br>
+<br></li>
+
+<li><tt>length</tt>: The length of the sequence in frames. You can
+get or set this value, but note that making a sequence shorter may
+cause issues if a sequence instance referencing this sequence has
+its playhead set to past the new length.<br>
+<br></li>
+
+<li><tt>volume</tt>: This is a scalar value from 0 to 1 that is
+used to scale the volume of all audio tracks in the sequence. You
+can get or set this value and it will modify the global audio
+output for all tracks - for example, if you have an audio track
+with a volume of 0.8 and then set the sequence <tt>volume</tt>
+property to 0.5, the audio track will have a final volume of
+0.4.<br>
+<br></li>
+
+<li><tt>xorigin</tt>: This is the origin of the sequence along the
+X axis. You can get or set this value.<br>
+<br></li>
+
+<li><tt>yorigin</tt>: This is the origin of the sequence along the
+Y axis. You can get or set this value.<br>
+<br></li>
+
+<li><tt>messageEventKeyframes</tt>: This allows access to the
+message event keyframes for the sequence. You can get or set these
+message events, and when getting this property an array of keyframe
+structs is returned, and for setting the property you should supply
+an array of keyframe structs. For more information, please see the
+page on <a href="sequence%20events.html">Sequence Events and
+Moments</a>.<br>
+<br></li>
+
+<li><tt>momentKeyframes</tt>: This allows access to the moment
+event keyframes for the sequence. You can get or set these moment
+events, and when getting this property an array of keyframe structs
+is returned, and for setting the property you should supply an
+array of keyframe structs. For more information, please see the
+page on <a href="sequence%20events.html">Sequence Events and
+Moments</a>.<br>
+<br></li>
+
+<li><tt>tracks</tt>: This allows access to the list of <b>asset
+tracks</b> on the top level of the sequence. You can get or set
+this property, and when getting this property an array of track
+structs is returned, and for setting the property you should supply
+an array of track structs. For more information, please see the
+section below on <b>Track Structs</b>.<br>
+<br></li>
+</ul>
+
+<p>Note that if you want to access the properties of a sequence
+that has been created in the asset browser, you must first call the
+function <a href="sequence_get.html"><tt>sequence_get()</tt> on the
+asset index to retrieve the sequence object struct.</a></p>
+</div>
+<br>
+<a name="instance" id="instance"></a> <label class="collapse" for=
+"2">The Sequence Instance Struct</label> <input id="2" type=
+"checkbox">
+<div class="index_list">
+<p>When placed in a room as an element on a layer, a sequence
+instance will have the following properties in its struct:</p>
+
+<ul>
+<li><tt>sequence</tt>: This is the ID of the <b>sequence object</b>
+struct that the sequence instance has been created from (see above
+for more details). You can get or set this struct, and so change
+the base sequence that the instance is referencing.<br>
+<br></li>
+
+<li><tt>headPosition</tt>: This is the current playhead position
+(in frames) for the sequence instance. You can get or set this
+value, but note that setting it to a value greater or less than the
+currently defined play region will have different effects depending
+on the type of playback set for the sequence. See <a href=
+"../rooms/sequences/layer_sequence_headpos.html"><tt>layer_sequence_headpos()</tt></a>
+for more information.<br>
+<br></li>
+
+<li><tt>headDirection</tt>: This is the current playback direction
+for the sequence instance. You can get or set this value using the
+following constants:
+
+<div class="compat">
+<table>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>seqdir_right</td>
+<td>The sequence will play frames in an incremental order from left
+to right</td>
+<td>1</td>
+</tr>
+
+<tr class="alt">
+<td>seqdir_left</td>
+<td>The sequence will play frames in a decremental order from right
+to left</td>
+<td>-1</td>
+</tr>
+</table>
+</div>
+<br>
+Note that you can use the layer functions <a href=
+"../rooms/sequences/layer_sequence_get_headdir.html"><tt>layer_sequence_get_headdir()</tt></a>
+and <a href=
+"../rooms/sequences/layer_sequence_headdir.html"><tt>layer_sequence_headdir()</tt></a>
+to get or set this value without having to access the struct
+directly.<br>
+<br></li>
+
+<li><tt>speedScale</tt>: This property can be used to get or set
+the playback speed scale. The speed scale is a <i>multiplier</i>,
+where 1 is the default playback speed and values less than 1 will
+slow the playback and values larger than 1 will speed it up, eg: a
+value of 0.5 would be half playback speed, while a value of 2 would
+be double playback speed. Note that you can use the layer functions
+<a href=
+"../rooms/sequences/layer_sequence_get_speedscale.html"><tt>layer_sequence_get_speedscale()</tt></a>
+and <a href=
+"../rooms/sequences/layer_sequence_speedscale.html"><tt>layer_sequence_speedscale()</tt></a>
+to get or set this value without having to access the struct
+directly.<br>
+<br></li>
+
+<li><tt>paused</tt>: You can check this property to see if a
+sequence has been paused or not, and it will be <tt>true</tt> if it
+has, or <tt>false</tt> otherwise. This is a <b>read-only</b>
+property, but you can use the layer function <a href=
+"../rooms/sequences/layer_sequence_pause.html"><tt>layer_sequence_pause()</tt></a>
+to pause playback, and <a href=
+"../rooms/sequences/layer_sequence_play.html"><tt>layer_sequence_play()</tt></a>
+to resume it again if required. You can also check this property
+using the layer function <a href=
+"../rooms/sequences/layer_sequence_is_paused.html"><tt>layer_sequence_is_paused()</tt></a>
+rather than check the property in the struct directly.<br>
+<br></li>
+
+<li><tt>finished</tt>: You can check this property to see if a
+sequence has finished playing or not, returning <tt>true</tt> if it
+is finished playing, and <tt>false</tt> otherwise. This is a
+<b>read-only</b> property, and will only ever return <tt>true</tt>
+for tracks that are not set to loop or ping-pong. You can also
+check this property using the layer function <a href=
+"../rooms/sequences/layer_sequence_is_finished.html"><tt>layer_sequence_is_finished()</tt></a>
+rather than check the property in the struct directly.<br>
+<br></li>
+
+<li><tt>elementID</tt>: This property holds the ID of the sequence
+<i>element</i>. This iD is a simple identifying value that is
+associated with a layer in the room editor, and it can then be used
+with the appropriate <a href="../rooms/sequences/index.html">layer
+functions</a> to find the layer the sequence has been assigned to
+or to change certain sequence properties without having to deal
+with the struct.<br>
+<br></li>
+
+<li><tt>activeTracks</tt>: This property will hold an array of
+"evaluation" structs containing information on the current state of
+each <b>asset track</b> in the sequence (graphics, sequence, audio
+etc...). These are only the top-level tracks, and the array
+returned is <b>read-only</b>. For the contents of the asset track
+struct returned in each array entry, please see the section
+below.</li>
+</ul>
+
+<p><br>
+The following list contains the properties that may be available to
+you when accessing a track struct (as returned by the
+<tt>activeTracks</tt> property of the parent sequence struct,
+explained above). Each asset track struct may have some or all of
+the following properties, depending on the type of asset the track
+is referencing (note that you can get or set all these properties,
+except where specified as read-only), and all values returned are
+the for the <i>current playhead position</i>:</p>
+
+<ul>
+<li><tt>matrix</tt>: This is the transformation matrix used to draw
+the track (sprite, instance and sequence tracks).<br>
+<br></li>
+
+<li><tt>posx</tt>: The position of asset in the sequence along the
+X axis for the track at the current playhead position (all
+assets).<br>
+<br></li>
+
+<li><tt>posy</tt>: The position of asset in the sequence along the
+Y axis for the track at the current playhead position (all
+assets).<br>
+<br></li>
+
+<li><tt>scalex</tt>: The scale of asset in the sequence along the X
+axis for the track at the current playhead position (sprite,
+instance and sequence tracks).<br>
+<br></li>
+
+<li><tt>scaley</tt>: The scale of asset in the sequence along the Y
+axis for the track at the current playhead position (sprite,
+instance and sequence tracks).<br>
+<br></li>
+
+<li><tt>xorigin</tt>: The X origin of the asset for the track (all
+assets).<br>
+<br></li>
+
+<li><tt>yorigin</tt>: The Y origin of the asset for the track (all
+assets).<br>
+<br></li>
+
+<li><tt>width</tt>: The width (in pixels) of the asset for the
+track (sprite, instance and sequence tracks).<br>
+<br></li>
+
+<li><tt>height</tt>: The height (in pixels) of the asset for the
+track (sprite, instance and sequence tracks).<br>
+<br></li>
+
+<li><tt>imageindex</tt>: The image index for the asset on the track
+in the sequence at the current playhead position (sprite and
+instance tracks).<br>
+<br></li>
+
+<li><tt>imagespeed</tt>: The image speed for the asset on the track
+in the sequence at the current playhead position (sprite and
+instance tracks).<br>
+<br></li>
+
+<li><tt>colourMultiply</tt>: The colour multiply value for the
+asset on the track in the sequence at the current playhead position
+(sprite, instance and sequence tracks). This value will be an array
+of four values with the format [A, R, G, B]. Note that the values
+for each component are expressed as between 0 and 1, where 0
+corresponds to the HEX value #00 and 1 corresponds to the HEX value
+#FF (0 - 255 as shown in the colour picker for colour multiply
+tracks in the Sequences Editor).<br>
+<br></li>
+
+<li><tt>gain</tt>: The gain (volume) of the track at the current
+playhead position (audio tracks).<br>
+<br></li>
+
+<li><tt>pitch</tt>: The pitch of the track at the current playhead
+position (audio tracks).<br>
+<br></li>
+
+<li><tt>track</tt>: The track data struct that this track is based
+on (all assets, a <b>read-only</b> value).<br>
+<br></li>
+
+<li><tt>parent</tt>: The parent sequence instance ID for the track
+(all assets, a <b>read-only</b> value).<br>
+<br></li>
+
+<li><tt>activeTracks</tt>: This is an array of evaluation structs
+for each parameter track that the asset track contains (all assets,
+a <b>read-only</b> value). The contents of each struct in the array
+are listed in the Parameter Track Struct section, below.<br>
+<br></li>
+</ul>
+</div>
+<br>
+<a name="track" id="track"></a> <label class="collapse" for="3">The
+Track Struct</label> <input id="3" type="checkbox">
+<div class="index_list">
+<p>The track struct can be used either for top-level <i>asset</i>
+tracks or for sub-track <i>parameter</i> tracks, and the behaviour
+of the track is defined by two things, its <b>name</b> and it's
+<b>type</b>. Track structs are created using the function <a href=
+"sequence_track_new.html"><tt>sequence_track_new()</tt></a> and the
+properties available to it are:</p>
+
+<ul>
+<li><tt>type</tt>: The following constants can all be used to
+define the type of track that is being created in the sequence
+(these constants are also used when generating keyframes and
+keyframe data, explained in sections below):
+
+<div class="compat">
+<table>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>seqtracktype_graphic</td>
+<td>This is a graphics (sprite) asset track.</td>
+<td>1</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_audio</td>
+<td>This is an audio asset track.</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>seqtracktype_instance</td>
+<td>This is an instance asset track.</td>
+<td>14</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_sequence</td>
+<td>This is a sequence asset track.</td>
+<td>7</td>
+</tr>
+
+<tr>
+<td>seqtracktype_clipmask</td>
+<td>This is a clip mask group asset track.</td>
+<td>8</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_clipmask_mask</td>
+<td>This is a clip mask sprite asset track used for generating the
+clip mask.</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>seqtracktype_clipmask_subject</td>
+<td>This is a clip mask sprite asset track that is being
+masked.</td>
+<td>10</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_group</td>
+<td>This group folder asset track.</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>seqtracktype_colour</td>
+<td>This is a colour data parameter track.</td>
+<td>4</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_real</td>
+<td>This is a real number value parameter track.</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>seqtracktype_message</td>
+<td>This is a broadcast message track.</td>
+<td>15</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_moment</td>
+<td>This is an event/moment track.</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>seqtracktype_bool</td>
+<td>Not used currently.</td>
+<td>5</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_string</td>
+<td>Not used currently.</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>seqtracktype_spriteframes</td>
+<td>Not used currently.</td>
+<td>13</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_empty</td>
+<td>Not used currently.</td>
+<td>12</td>
+</tr>
+</table>
+</div>
+<br></li>
+
+<li><tt>name</tt>: When creating an asset track, the name you give
+here can be any string that you require to identify the track,
+however for parameter tracks, you need to specify specific strings
+to tell <i>GameMaker Studio 2</i> what kind of parameter track you
+are creating (these strings are only applicable to the
+<tt>seqtracktype_real</tt> and <tt>seqtracktype_colour</tt>
+parameter track types):<br>
+<br>
+
+<ul>
+<li>"position" - when set on a track which is of type
+<tt>seqtracktype_real</tt> this indicates that the contents of this
+track should be used as positional data.<br>
+<br></li>
+
+<li>"scale" - when set on a track which is of type
+<tt>seqtracktype_real</tt> this indicates that the contents of this
+track should be used as scaling data.<br>
+<br></li>
+
+<li>"rotation" - when set on a track which is of type
+<tt>seqtracktype_real</tt> this indicates that the contents of this
+track should be used as rotation data.<br>
+<br></li>
+
+<li>"blend_multiply" - when set on a track which is of type
+<tt>seqtracktype_colour</tt> this indicates that the contents of
+this track should be used as colour multiplication data. The
+keyframe data for such a track should be an array of four values
+with the format [A, R, G, B]. Note that the values for each
+component are expressed as between 0 and 1, where 0 corresponds to
+the HEX value #00 and 1 corresponds to the HEX value #FF (0 - 255
+as shown in the colour picker for image blend tracks in the
+Sequences Editor).<br>
+<br></li>
+
+<li>"image_speed" - when set on a track which is of type
+<tt>seqtracktype_real</tt> this indicates that the contents of this
+track should be used as the image speed value.<br>
+<br></li>
+
+<li>"image_index" - when set on a track which is of type
+<tt>seqtracktype_real</tt> this indicates that the contents of this
+track should be used as the image index value.<br>
+<br></li>
+
+<li>"image_angle" - when set on a track which is of type
+<tt>seqtracktype_real</tt> this indicates that the contents of this
+track should be used as the image angle value.<br>
+<br></li>
+
+<li>"image_blend" - when set on a track which is of type
+<tt>seqtracktype_colour</tt> this indicates that the contents of
+this track should be used as the image blend value. The keyframe
+data for such a track should be an array of four values with the
+format [A, R, G, B]. Note that the values for each component are
+expressed as between 0 and 1, where 0 corresponds to the HEX value
+#00 and 1 corresponds to the HEX value #FF (0 - 255 as shown in the
+colour picker for colour multiply tracks in the Sequences
+Editor).<br>
+<br></li>
+</ul></li>
+
+<li><tt>tracks</tt>: This property allows access to the list of
+tracks which are children of this track. When getting this property
+an array of track structs is returned, and when setting this
+property an array of track structs should be specified.<br>
+<br></li>
+
+<li><tt>visible</tt>: This indicates whether this track is visible
+(the value is <tt>true</tt>) or not (the value is <tt>false</tt>).
+You can get or set this value and if a track not visible then none
+of its child tracks will be drawn either.<br>
+<br></li>
+
+<li><tt>keyframes</tt>: This property allows access to the list of
+keyframe structs for the track. When getting this property an array
+of keyframe structs is returned, and when setting this property an
+array of keyframe structs should be specified.<br>
+<br></li>
+</ul>
+</div>
+<br>
+<a name="keyframe" id="keyframe"></a> <label class="collapse" for=
+"4">The Keyframe Struct</label> <input id="4" type="checkbox">
+<div class="index_list">
+<p>Each track will have one or more keyframe struct assigned to it
+(which you can get from the <tt>keyframes</tt> property of the
+track struct), and each one will have the following properties:</p>
+
+<ul>
+<li><tt>frame</tt>: The position (in frames) along the timeline for
+the keyframe. Default value is 0.<br>
+<br></li>
+
+<li><tt>length</tt>: The length of the keyframe. Default value is
+1, and when set to larger values then the track property that the
+keyframe refers to will be maintained at the initial value for the
+duration of the length given. Note that the <tt>stretch</tt>
+property will override this if set to <tt>true</tt>.<br>
+<br></li>
+
+<li><tt>stretch</tt>: If this property is set to <tt>true</tt> then
+the keyframe stretches to either the next keyframe for the track or
+to the end of the track if it's the last keyframe. You can get or
+set this value, and the default value is <tt>false</tt>.<br>
+<br></li>
+
+<li><tt>channels</tt>: This property allows access to the list of
+keyframe data structs for the channels of the track. When getting
+this property an array of keyframe data structs is returned, and
+when setting this property an array of keyframe data structs should
+be specified.<br>
+<br></li>
+</ul>
+</div>
+<br>
+<a name="keyframe_data" id="keyframe_data"></a> <label class=
+"collapse" for="5">The Keyframe Data Struct</label> <input id="5"
+type="checkbox">
+<div class="index_list">
+<p>When you define a keyframe for a track, you need to also define
+the data that will be associated with it. This is comprised of
+different <i>channels</i>, and each channel can be given a specific
+type of data depending on what type of track you are setting the
+keyframe data for. These properties are:</p>
+
+<ul>
+<li><tt>channel</tt>: This is the channel that the keyframe data
+should be applied to. It is a positive integer value starting at 0,
+and it's worth noting that when creating parameter tracks for
+"position" or "scale" keyframes, then you need to use very specific
+channel values. These are: channel 0 is the X position or the X
+scale, channel 1 is the Y position or Y scale.<br>
+<br></li>
+
+<li><tt>spriteIndex</tt>: The index of the sprite asset to use for
+the track. This property is only available for tracks of the type
+<tt>seqtracktype_graphic</tt> and you can get or set it.<br>
+<br></li>
+
+<li><tt>soundIndex</tt>: The index of the audio asset to use for
+the track. This property is only available for tracks of the type
+<tt>seqtracktype_audio</tt> and you can get or set it.<br>
+<br></li>
+
+<li><tt>playbackMode</tt>: The playback mode for the sound. This
+property is only available for tracks of the type
+<tt>seqtracktype_audio</tt> and you can get or set it. The property
+should be one of the following constants:
+
+<div class="compat">
+<table>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>seqaudiokey_loop</td>
+<td>The sound will loop when played.</td>
+<td>0</td>
+</tr>
+
+<tr class="alt">
+<td>seqaudiokey_oneshot</td>
+<td>The sound will only play once then stop.</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+<br></li>
+
+<li><tt>curve</tt>: This property requires an animation curve
+struct (see <a href=
+"../animation%20curves/animcurve_create.html">here</a> for more
+information) and is only available for tracks of the type
+<tt>seqtracktype_real</tt>. If no curve struct is used then the
+value for this property will be -1.<br>
+<br></li>
+
+<li><tt>value</tt>: This property is simply a value that is
+associated with the keyframe data channel, and is only available
+for tracks of the type <tt>seqtracktype_real</tt> when no
+<tt>curve</tt> struct is supplied.<br>
+<br></li>
+
+<li><tt>colour</tt>: This property returns (or requires, if being
+set) an array for the colour value of the keyframe with the format
+[A, R, G, B]. This is only available for tracks of the type
+<tt>seqtracktype_colour</tt>. Note that the values for each
+component should be expressed as between 0 and 1, where 0
+corresponds to the HEX value #00 and 1 corresponds to the HEX value
+#FF (0 - 255 as shown in the colour picker for colour tracks in the
+Sequences Editor).<br>
+<br></li>
+
+<li><tt>sequence</tt>: This property will return (or requires, if
+being set) a sequence object struct and is only available for
+tracks of the type <tt>seqtracktype_sequence</tt>.<br>
+<br></li>
+
+<li><tt>objectIndex</tt>: This property will return (or requires,
+if being set) an object index and is only available for tracks of
+the type <tt>seqtracktype_instance</tt>.<br>
+<br></li>
+
+<li><tt>events</tt>: This property allows access to the
+<b>events</b> and <b>broadcast messages</b> associated with the
+keyframe data struct. You can get or set this property, and when
+getting it an array of strings is returned, and when setting it an
+array of strings should be specified. For more information on
+events, please see the section <a href=
+"sequence%20events.html">Sequence Events And Moments</a>. This
+property is only available for tracks of the type
+<tt>seqtracktype_message</tt>.<br>
+<br></li>
+
+<li><tt>event</tt>: This property will return (or can be set to)
+the <a href=
+"../../3_gml_overview/variable_scope/method_variables.html">method</a>
+associated with the keyframe data struct. If no method has been
+specified or you wish to remove the method, then the property
+should be -1. This property is only available for tracks of the
+type <tt>seqtracktype_moment</tt>.<br>
+<br></li>
+</ul>
+</div>
+<br></blockquote>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href="../index.html"><i>GameMaker
+Studio 2</i> Language Reference</a></div>
+
+<div style="float:right">Next: <a href=
+"../fonts/index.html">Fonts</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

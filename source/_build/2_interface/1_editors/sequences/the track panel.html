@@ -1,0 +1,743 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>The Track Panel</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/2_interface/1_editors/sequences/the track panel.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences%2Fthe%20track%20panel.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences%2Fthe%20track%20panel.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>The Track Panel</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p><img class="center" src="images/track_panel.png" alt=
+"The Track Panel">
+</p>
+
+<p>What your sequences do are governed by the assets and parameters
+that have been added to the Track Panel. You can add a track to the
+editor by either:</p>
+
+<ul>
+<li>dragging an asset into the sequence <a href=
+"the%20sequence%20canvas.html">Canvas</a><br>
+<br></li>
+
+<li>dragging an asset into the Track Panel itself<br>
+<br></li>
+
+<li>by clicking the "Add Asset" <img style="vertical-align:middle"
+src="images/icon_addasset.png"> button at the bottom of the Track
+Panel.</li>
+</ul>
+
+<p>This last method will open the Asset Explorer for you where you
+can choose the asset to add.</p>
+
+<p>Regardless of the method you choose, a new <b>Asset Track</b>
+will be made for the asset. This track is the main track for the
+asset in the sequence and will have a corresponding <b>key
+track</b> created for the asset in the <a href=
+"using%20the%20dope%20sheet.html">Dope Sheet</a> at the playhead
+position:<br>
+<br>
+<img class="center" src="images/track_editor_add_asset.gif" alt=
+"Add An Asset To The Track Panel"></p>
+
+<p>Note that the colour of the Asset Key in the Dope Sheet can be
+set from the Track Panel by clicking the coloured bar at the end.
+This will open up the Colour Picker where you can choose which
+colour to use for the key tracks in the Dope Sheet.</p>
+
+<p>Each asset in the track editor can also have a set of
+<b>Parameter Tracks</b> added to it. These tracks are what control
+the various different properties (parameters) that can be modified
+for the track over time. The different parameters available are
+covered in depth in the section on "Adding Parameter Tracks"
+further down this page, but to give you an idea of what's available
+here is a brief list:</p>
+
+<ul>
+<li><b>All Assets</b>: <i>Position</i> and <i>rotation</i>.<br>
+<br></li>
+
+<li><b>Sounds</b>: <i>Pitch</i> and <i>Volume</i>.<br>
+<br></li>
+
+<li><b>Sequences</b>: <i>Origin</i> and <i>Scale</i>.<br>
+<br></li>
+
+<li><b>Sprites</b> and <b>Objects</b>: <i>Origin</i>, <i>Scale</i>,
+<i>Image Index</i>, <i>Image Speed</i>, <i>Colour Add</i> and
+<i>Colour Blend</i>.</li>
+</ul>
+
+<p>To add a parameter track in the editor you can enable
+"Automatically Record Changes" <img style="vertical-align:middle"
+src="../images/icon_seq_record.png"> in the Track Panel, which will
+then add parameter keys for any changes you make to an asset in the
+Canvas at the current playhead position, as shown here:<br>
+<br>
+<img class="center" src="images/canvas_add_keys.gif" alt=
+"Adding A Parameter Key To An Asset In The Canvas"></p>
+
+<p>Alternatively, you can click the "Add Parameter Track"
+<img style="vertical-align:middle" src=
+"images/icon_addparameter.png"> button, which will open up a menu
+showing you the different options available: <img class="center"
+src="images/track_editor_add_parameter.png" alt=
+"Adding A Parameter Track To An Asset In The Track Panel"></p>
+
+<p>Selecting any option from this menu, or recording directly from
+the IDE, will create one or more parameter tracks underneath the
+main asset track, and also add a parameter key to the Dope Sheet,
+coloured the same as the main asset track colour: <img class=
+"center" src="images/track_editor_parametertracks.png" alt=
+"Parameter Tracks In The Track Panel And Dope Sheet"></p>
+
+<p>Once you add a parameter track to your main asset track, the
+dope sheet will have a coloured bar to show the length of the asset
+track in frames, and there will be <b>parameter keys</b> added at
+the points where you want a change in the parameter to occur. These
+keys can be seen in the above image as simple "dots" on a frame.
+When a track has parameter keys like this, the parameter they refer
+to will be interpolated by default between each of the points
+shown. For example, if you have a rotation parameter and at frame 0
+it is set to 90° then at frame 30 it is 180°, then at frame 15 it
+will be 135°. You can actually see the change in values over time
+by selecting the parameter track and then "scrubbing" the playhead
+in the dope sheet:<br>
+<br>
+<img class="center" src=
+"images/track_editor_changing_parameter.gif" alt=
+"Interpolating Between Parameter Keys"></p>
+
+<p><br>
+Note that for all parameter tracks you can disable the default
+linear interpretation between different keys from the right mouse
+button <img style="vertical-align:middle" src=
+"../../../images/icon_rmb.png"> menu on the parameter track, which
+means that transitions between parameter values will occur
+instantly on the given frame rather than gradually over time:
+<img class="center" src="images/track_editor_rmb_menu_params.png"
+alt="Disable Linear Interpolation On Parameter Track"></p>
+
+<p>Apart from being able to choose the transition type for
+parameter tracks, the RMB menu also offers you the following
+options:</p>
+
+<ul>
+<li><b>Cut</b>, <b>Copy</b>, and <b>Paste</b>: These options permit
+you to cut/copy/paste asset or parameter tracks.<br>
+<br></li>
+
+<li><b>Duplicate Track(s)</b>: This will create a duplicate of the
+currently selected track(s). If this is an<br>
+<br></li>
+
+<li><b>Delete Track(s)</b>: This will delete the selected track or
+tracks. If you delete an asset track, then the parameter tracks
+associated with it will also be removed, however you can delete
+parameter tracks individually.<br>
+<br></li>
+
+<li><b>Group</b>: Using this option on an empty space in the Track
+Panel will create a group folder which you can then use to help
+keep your assets in a more orderly format. You can add an asset to
+a group by simply clicking on it and dragging it onto the folder.
+If you have already selected a track or tracks, then using this
+option will not only create a group folder, but it will add the
+track(s) to it.<br>
+<br></li>
+
+<li><b>Rename</b>: You can use this option to rename any asset
+track or group folder.</li>
+</ul>
+
+<p>An important feature of asset and parameter tracks is the
+ability to <b>parent</b> tracks and groups. If you drag an asset
+track onto another one in the track panel, the first asset becomes
+a <b>child</b> of the asset it was dropped on, which in turn
+becomes the <b>parent</b>. All parameter tracks assigned to the
+parent asset track will then automatically be applied to the child
+asset tracks, so you can have multiple sprites (for example) all
+using a single position asset track to move:<br>
+<br>
+<img class="center" src="images/track_editor_parenting.gif" alt=
+"Parent And Child Sprites Share Parameters"></p>
+
+<p><br>
+The same can be done using <b>groups</b>. You can create a group
+folder by clicking the button at the bottom of the track panel and
+then drag and drop the asset tracks you want to be grouped together
+on the group folder. These assets will still retain their own
+parameter tracks, but you can then give additional parameter tracks
+to the group and all the assets in the group will be affected by
+these parameter tracks <i>as well as</i> their own individual
+parameter tracks.</p>
+
+<p>When working with the track panel the usual keyboard shortcuts
+can be used too, ie: <img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> and the
+left mouse button <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> to select one or more tracks in any
+order, <img style="vertical-align:middle" src=
+"../../../images/icon_shift.png"> and the left mouse button
+<img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> to select consecutive tracks, and
+you can also cut, copy and paste tracks using the <img style=
+"vertical-align:middle" src="../../../images/icon_ctrl.png"> /
+<img style="vertical-align:middle" src=
+"../../../images/icon_cmd.png"> + "X", <img style=
+"vertical-align:middle" src="../../../images/icon_ctrl.png"> /
+<img style="vertical-align:middle" src=
+"../../../images/icon_cmd.png"> + "C" and <img style=
+"vertical-align:middle" src="../../../images/icon_ctrl.png"> /
+<img style="vertical-align:middle" src=
+"../../../images/icon_cmd.png"> + "V" key combinations.</p>
+
+<p>That's the basics of using the track editor, but below we go
+into a bit more detail on what each of the different sections are
+for and how to use them:</p>
+
+<p><br>
+</p>
+
+<blockquote><a name="sequence_name" id="sequence_name"></a>
+<label class="collapse" for="1">Sequence Name</label> <input id="1"
+type="checkbox">
+<div class="index_list">
+<p>This tab simply shows the name of the sequence that is currently
+being edited. you can perform a slow double click <img style=
+"vertical-align:middle" src="../../../images/icon_lmb.png"> on the
+tab to change the name if required. All sequence names must use
+alpha-numeric values only, along with the under-bar "_" symbol, and
+cannot start with a number.</p>
+</div>
+<br>
+<a name="search" id="search"></a> <label class="collapse" for=
+"2">Track Search</label> <input id="2" type="checkbox">
+<div class="index_list">
+<p>This search box permits you to quickly search through the
+various tracks of the sequence to find the one you wish to edit.
+Typing any text here will tell you how many asset tracks have been
+found with that string in them, and also highlight the arrows to
+the side of the search box. Clicking these arrows will skip to the
+first and consecutive assets that fulfill the search criteria.</p>
+</div>
+<br>
+<a name="asset_track" id="asset_track"></a> <label class="collapse"
+for="3">Asset Tracks</label> <input id="3" type="checkbox">
+<div class="index_list">
+<p>Each asset that is added to a sequence will be given its own
+track, and these are listed here. If the asset track has any
+parameters set for it, then these will also be shown underneath as
+parameter tracks. You can expand or contract the parameter tracks
+by clicking on the arrow icon to the left of the track name, and
+you can edit the track name by using a slow double click
+<img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> on the track and then giving it the
+name of your choice. Note that there are no restrictions on the
+name you give and you can use spaces, non alpha-numeric characters
+and start them with a number if you wish.</p>
+
+<p>The different types of parameter tracks available are explained
+in more detail in the section on "Adding Parameter Tracks" further
+down this page.</p>
+</div>
+<br>
+<a name="key_controls" id="key_controls"></a> <label class=
+"collapse" for="4">Key Controls</label> <input id="4" type=
+"checkbox">
+<div class="index_list">
+<p>Once you have added a parameter track, you can add and remove
+<b>parameter keys</b> to specific frames to set the value for that
+parameter. This can be done using the "Record Key" or "Delete key"
+button (see the section on "Track Key Controls" for more
+information), or you can do it using the <b>Key Controls</b> on the
+parameter itself. To use these controls, you need to position the
+playhead in the Dope Sheet to the frame you want to edit, and then
+you can click the circular "key" icon on the left of the parameter
+track. If the frame has no key assigned to it the circle will be
+"empty" and clicking it will add a new key and allow you to edit
+the parameter value. If the frame has a key already, then the
+circle will be "filled" and clicking it will instead remove the key
+from the frame:<br>
+<br>
+<img class="center" src="images/track_editor_add_param_key.gif"
+alt="Adding And Removing Parameter Keys Using The Track Panel"><br>
+<br>
+You'll notice too that in the image above you can use the arrow
+buttons on either side of the parameter key marker to quickly skip
+between key frames in the dope sheet too, without having to
+position the playhead manually.</p>
+</div>
+<br>
+<a name="parameter_values" id="parameter_values"></a> <label class=
+"collapse" for="5">Parameter Values</label> <input id="5" type=
+"checkbox">
+<div class="index_list">
+<p>When a parameter track has been added, you can edit the values
+for some of them by simply setting the playhead in the Dope Sheet
+to the frame with the key you want to change and then use the
+different canvas widgets to edit the position, rotation, scale or
+origin of the asset. These changes will be reflected in the key
+value for that frame. However not all parameters can be edited this
+way, or it may not be precise enough for your needs, and in those
+cases you can edit the parameter value directly by clicking on it
+in the track and setting it to the required value for the parameter
+type.</p>
+
+<p>Note that some parameter tracks may have a "link" icon
+<img style="vertical-align:middle" src=
+"images/icon_track_link.png"> next to their values, which means
+they can be linked together. This is done by clicking the icon to
+enable/disable linking, and when enabled, editing one value will
+also set the other.</p>
+</div>
+<br>
+<a name="events" id="events"></a> <label class="collapse" for=
+"11">Events</label> <input id="11" type="checkbox">
+<div class="index_list">
+<p>In a similar way to regular objects, sequences can have
+<b>events</b> that can run some code assigned to them. The code is
+assigned in the form of a <a href=
+"../../../3_scripting/3_gml_overview/3_scripts.html">scripted
+function</a> which can take no arguments and will be called when
+the event is triggered.</p>
+
+<p>Events are added by clicking the <b>Add Event</b> button
+<img style="vertical-align:middle" src=
+"../images/icon_addevent.png"> which will open the following
+window: <img class="center" src=
+"../images/editor_sequences_events.png" alt=
+"Sequence Editor Add Event Window"></p>
+
+<p>The events listed here are as follows:</p>
+
+<ul>
+<li><b>Create</b> - This event happens when an instance of the
+sequence is first created, and is the very first thing that happens
+within a sequence placed in the room through the room editor when a
+room is entered.<br>
+<br></li>
+
+<li><b>Destroy</b> - This event is executed when an instance of the
+sequence is destroyed, and will be run before the Clean Up event
+(see below).<br>
+<br></li>
+
+<li><b>Clean Up</b> - This event will be called after any event
+that removes an instance of the sequence from the room. So, it will
+be triggered if the sequence is destroyed, if the room ends, or if
+the game ends, and is designed to perform any task that you need
+performed once when the sequence instance is removed from the game
+for any reason. If you have destroyed the sequence instance using,
+for example, <tt>layer_sequence_destroy()</tt>, then this event
+will be called after the Destroy Event (see above).<br>
+<br></li>
+
+<li><b>Begin Step</b> / <b>Step</b> / <b>End Step</b> - The Step
+Event is an event that is checked every single step (frame) of the
+game while the sequence instance exists, and is split into three
+parts: begin, step and end. For most things the standard step event
+will be fine to use, but sometimes you want a bit more control over
+what code runs and at what time, so for that you are provided with
+the <b>Begin</b> and <b>End</b> step events, and these events will
+always be triggered in the same order every step (frame) of the
+game. <b>Important!</b> If the sequence is paused then these events
+will <i>not</i> be triggered, and when play resumes they will be
+triggered the next frame after the sequence starts playing again.
+Also note that the order of events is not influenced by the
+playhead direction, and even if the sequence is playing backwards,
+the events will still be run as Begin, Step and End.<br>
+<br></li>
+
+<li><b>Async Event</b>: This is the equivalent of the object
+<a href=
+"../../../2_interface/1_editors/events/async_events.html">Asynchronous
+System Event</a>. <b>Important!</b> If the sequence is paused then
+this event will <i>not</i> be triggered.</li>
+</ul>
+
+<p>Each event can be assigned a single function which will be
+called when the event is triggered. You can assign the function
+using the input box for the vent, and clicking the arrow button
+<img style="vertical-align:middle" src=
+"../images/icon_openfunction.png"> will open the script editor for
+the function to be edited. You can also click the <b>Create New</b>
+button at the bottom to create a new script resource with
+"boilerplate" functions already defined and ready to be filled in.
+Note that you can change the function names to anything you require
+and do not have to use the predefined names, and you can also
+remove any function definitions that you don't need. It is
+important note that functions used for sequence events <b>cannot
+take any arguments</b>.</p>
+
+<p>Sequence events can also be added and edited using code. For
+more information please see <a href=
+"../../../3_scripting/4_gml_reference/sequences/sequence%20events.html">
+here</a>.</p>
+</div>
+<br>
+<a name="keyframe_controls" id="keyframe_controls"></a>
+<label class="collapse" for="6">Keyframe Controls</label>
+<input id="6" type="checkbox">
+<div class="index_list">
+<p>This section of the track editor has the buttons that are used
+to for large-scale key control on the specified track or tracks.
+The controls are as follows:</p>
+
+<ul>
+<li><img style="vertical-align:middle" src=
+"../images/icon_seq_split.png"> - This is the "Split selected keys"
+button. When you have selected one or more track or asset keys in
+the dope sheet, you can then click this button and they will be
+split into two separate keys at the time line playhead
+position:<br>
+<br>
+<img class="center" src="../images/editor_sequences_split.gif" alt=
+"Split Asset and Parameter Keys"><br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"../images/icon_seq_delete.png"> - This is the "Delete selected
+keys" button. When you have selected one or more track or asset
+keys or parameter keys in the dope sheet, you can then click this
+button and they will be deleted:<br>
+<br>
+<img class="center" src="../images/editor_sequences_delete.gif"
+alt="Delete Parameter Keys"><br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"../images/icon_seq_add.png"> - This is the "Record a new key"
+button. When you have selected a track or an asset key in the dope
+sheet and press this button, new parameter keys will be added to
+the asset track as parameter tracks, and the parameter keys will be
+added as points in the dope sheet time line at the playhead
+position:<br>
+<br>
+<img class="center" src="../images/editor_sequences_record.gif"
+alt="Add Parameter Keys At Playhead Position"><br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"../images/icon_seq_record.png"> - This is the "Automatically
+Record Changes" button. When this is enabled, any changes made to
+the asset within the canvas will be automatically recorded and the
+appropriate parameter tracks and parameter keys added at the
+playhead position in the dope sheet. For example, if you move the
+playhead from frame 0 to frame 10 and then in the canvas move the
+asset 100 pixels to the right, a parameter track will be added for
+position, and the parameter keys will be added at frame 0 (the
+initial position) and at frame 10 (the playhead position) and when
+you press "Play" on the sequence, the asset will move 100px to the
+right over ten frames.<br>
+<br>
+<img class="center" src="../images/editor_sequences_auto.gif" alt=
+"Automatically Record Parameter Keys"><br>
+<br></li>
+</ul>
+</div>
+<br>
+<a name="visible_lock_toggle" id="visible_lock_toggle"></a>
+<label class="collapse" for="7">Visible / Lock Toggles</label>
+<input id="7" type="checkbox">
+<div class="index_list">
+<p>Both asset tracks and parameter tracks have a button to toggle
+track visibility <img style="vertical-align:middle" src=
+"images/icon_track_visible.png"> and to lock the track <img style=
+"vertical-align:middle" src="images/icon_track_lock.png">. If you
+disable the visibility of the track, then it will not be shown when
+the sequence is run in a room, nor will it be shown in the sequence
+canvas while testing, and toggling the visibility of an asset track
+will also toggle the visibility of its parameter tracks. Locking a
+track simply means that this track will no longer be able to be
+edited in any way. Note that tracks that are invisible will be
+drawn faded on the dope sheet, while tracks that are locked will be
+drawn with an overlay, so you can immediately see what state each
+track is in: <img class="center" src=
+"images/track_editor_locked_and_visible.png" alt=
+"Locked And Invisible Tracks In The Dope Sheet"></p>
+
+<p>It is worth noting that while locking an asset track will lock
+the parameter tracks associated with it, you can then unlock the
+individual parameters as required, and parameters themselves can be
+locked/unlocked without affecting the status of the main asset
+track.</p>
+</div>
+<br>
+<a name="track_colour" id="track_colour"></a> <label class=
+"collapse" for="8">Track Colour</label> <input id="8" type=
+"checkbox">
+<div class="index_list">
+<p>Each asset track you create will be assigned a random colour by
+the IDE to make it easier to identify on the Dope Sheet. This
+colour can be changed at any time by simply clicking the colour bar
+for the track and then selecting the colour you want to use from
+the Colour Picker window that opens. Any colour selected for an
+asset track will automatically be applied to all the parameter
+tracks associated, however you can then edit the colour of each
+parameter track individually so it is different if required. Note
+that if you then change the asset track colour again, this will
+override any changes made to the parameter tracks.</p>
+</div>
+<br>
+<a name="add_paramter" id="add_paramter"></a> <label class=
+"collapse" for="9">Adding Parameter tracks</label> <input id="9"
+type="checkbox">
+<div class="index_list">
+<p>The <b>Add Parameter</b> <img style="vertical-align:middle" src=
+"images/icon_add_param.png"> button can be used to add a single
+parameter track to the selected asset track. As mentioned earlier
+on this page, parameter tracks can be of various different types
+depending on the asset that it is related to. Below is a list of
+all the different parameter tracks available and what they refer
+to, as well as the assets that they can be applied to:</p>
+
+<ul>
+<li><b>Position</b>: This parameter track can be added to any of
+the four sequence asset types (sprites, objects, sounds or
+sequences) and is used to set the spacial position within the
+sequence for the asset. It takes an X and a Y value.<br>
+<br></li>
+
+<li><b>Rotation</b>: Like the position parameter, the rotation
+parameter is available for all sequence assets and can be used to
+set the rotation in degrees for the asset. Keep in mind that
+<i>GameMaker Studio 2</i> calculates rotation anti-clockwise,
+starting with 0° on the right, so 90° is up, 180° is left and 270°
+is down.<br>
+<br></li>
+
+<li><b>Origin</b>: The origin parameter is available for sprite,
+object and sequence assets and can be used to set the X and Y
+position of the origin of the asset. Changing the origin will
+affect how the asset is positioned, rotated and scaled.<br>
+<br></li>
+
+<li><b>Scale</b>: The scale parameter is available for sprite,
+object and sequence assets and is used to set the horizontal and
+vertical scale of the asset. This will affect how the asset is
+rendered in the IDE and at runtime, and is calculated as a scalar
+value, where 100% is the default asset size, 50% would be half
+size, and 200% would be double the size. Note that you have the
+possibility of linking the horizontal and vertical scale values by
+clicking the "link" <img style="vertical-align:middle" src=
+"images/icon_track_link.png"> button. This means that changing one
+value will automatically change the other too.<br>
+<br></li>
+
+<li><b>Image Index</b> and Image Speed: These parameters are only
+available for sprite and object assets and can be used to change
+the current animation frame (see the page on the <a href=
+"../../../3_scripting/4_gml_reference/instances/instance_variables/image_index.html">
+<tt>image_index</tt></a> for more information) as well as the
+current animation speed, which is set using FPS and works the same
+way as the value you set for the sprite being used in the sprite
+editor.<br>
+<br></li>
+
+<li><b>Colour Multiply</b>: This parameter is only available for
+sprite and object assets and can be used to change the current
+blend colour for the sprite being drawn. This is the equivalent of
+setting the <a href=
+"../../../3_scripting/4_gml_reference/instances/instance_variables/image_blend.html">
+<tt>image_blend</tt></a> value and any colours set here will be
+"multiplied" (ie, blended) with the colour of the sprite, and a
+value of white (#ffffffff) indicates that no blending should take
+place. Note that when working with this type of track, you can set
+the colour by manually typing in the hex value, or you can click
+the colour swatch to open the <i>GameMaker Studio 2</i> Colour
+Picker. Note that colours are given in ARGB format, so you can set
+a value for alpha using this kind of parameter track (the Colour
+Picker also permits you to set the alpha value). This would be the
+equivalent of setting the <a href=
+"../../../3_scripting/4_gml_reference/instances/instance_variables/image_alpha.html">
+<tt>image_alpha</tt></a> for the sprite.<br>
+<br></li>
+
+<li><b>Volume</b>: The volume parameter only applies to sound asset
+tracks and can be used to set the gain of the sound (the actual
+sound asset gain won't be changed, as it's essentially an emitter
+that is used for the asset track in sequences). The volume value is
+calculated as a percentage, where 0% is no volume and 100% is full
+volume.<br>
+<br></li>
+
+<li><b>Pitch</b>: The pitch parameter only applies to sound asset
+tracks and can be used to set the pitch of the sound (as with
+volume, the actual sound asset gain won't be changed, as it's
+essentially an emitter that is used for the asset track in
+sequences). The pitch value is calculated as a percentage, 100% is
+the "natural" pitch of the sound, and less than 100% will lower it
+while greater than 100% will raise it.<br>
+<br></li>
+
+<li><b>Falloff</b>: Currently not implemented</li>
+</ul>
+</div>
+<br>
+<a name="track_actions" id="track_actions"></a> <label class=
+"collapse" for="10">Track Actions</label> <input id="10" type=
+"checkbox">
+<div class="index_list">
+<p>The buttons at the bottom of the track editor are the different
+track actions and can be used for the following purposes:</p>
+
+<ul>
+<li><img style="vertical-align:middle" src=
+"images/icon_addasset.png"> - This button will open the Asset
+Explorer for you to pick an asset to use as a new track. Once
+selected the asset track will be created and frames added into the
+Dope Sheet at the current playhead position.<br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"images/icon_duplicateasset.png"> - When you have selected one or
+more asset tracks in the track editor, clicking this button will
+duplicate them (along with any parameter tracks they may
+contain).<br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"images/icon_addclipmask.png"> - Clicking this will create a
+special <b>clipping mask group</b> where you can give sprites to
+use as masks and sprites to be masked. More information on this is
+given further down this page.<br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"images/icon_addgroup.png"> - Clicking this will add a new group
+folder to the track editor, which can then be used to better
+organise tracks. You can add a track t a group by dragging the
+track onto the group folder and you can remove it again by dragging
+it out of the folder. Note that any asset that is added to a group
+folder will automatically be assigned the folder colour, although
+you can then edit the track colour for individual tracks so that it
+is different if required.<br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"images/icon_delete.png"> - As you might expect, clicking this will
+delete the selected track(s). If this is an asset track, then all
+parameter tracks it contains will also be deleted, although you can
+use it on selected parameter tracks to delete them on their own
+without removing the asset tracks they are associated with. If you
+use this on an empty group folder then the folder will be deleted,
+however if there are any tracks in the folder you will be shown a
+warning, as deleting a folder will remove all tracks that are
+inside of it too.</li>
+</ul>
+</div></blockquote>
+
+<p><br>
+</p>
+
+<h2>Clipping Masks</h2>
+
+<p><br>
+</p>
+
+<p>As mentioned in the <b>Track Actions</b> section above, there is
+an action to create what is called a <b>clipping mask</b> group in
+the track editor. A clipping mask group contains two sub-sets of
+assets that can be used as either the <i>subject</i> or the
+<i>mask</i> of the group. Basically the subject is the asset that
+is going to be masked, and the mask is the asset that is going to
+do the masking: <img class="center" src=
+"images/track_clipping_mask.png" alt="Basic Clipping Mask"></p>
+
+<p>The idea behind using a clipping mask is that you add a subject
+sprite, and then a mask sprite, and the mask sprite will "hide"
+(mask) the subject. You can then use the mask sprite animation, or
+move or scale the mask sprite to change the visibility of the
+subject (or parts of the subject). To add a subject and mask,
+simply drag the sprite, object or sequence from the asset browser
+over the folder that you want to add it to (note that you can have
+multiple subjects and masks in one folder):<br>
+<br>
+<img class="center" src="images/track_add_clipping_mask.gif" alt=
+"Add A Clipping Mask"></p>
+
+<p><br>
+The mask sprite <b>alpha</b> will be used to "hide" whatever
+subject is underneath it, where the 100% alpha (opaque) will mask
+completely and 0% alpha (will show it). For example, we have this
+sprite for masking:<br>
+<br>
+<img class="center" src="images/clipping_mask_sprite.png" alt=
+"Clipping Mask Example Sprite"></p>
+
+<p><br>
+We can then apply this as a clipping mask to icons to create a
+"cooldown" effect, like this:<br>
+<br>
+<img class="center" src="images/clipping_mask_example.gif" alt=
+"Animated Clipping Mask Example"></p>
+
+<p><br>
+Note that clipping mask groups can be treated as a single item in
+the track list and dope sheet, and you can add <i>rotation</i> and
+<i>position</i> parameter tracks to the group as a whole. You can
+also add the usual parameter tracks to each of the assets used as
+the mask or the subject.</p>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href="../sequences.html">The
+Sequences Editor</a></div>
+
+<div style="float:right">Next: <a href=
+"using%20the%20dope%20sheet.html">Using The Dope Sheet</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

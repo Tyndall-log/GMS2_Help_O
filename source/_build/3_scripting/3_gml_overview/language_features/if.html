@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>If / Else and Conditional Operators</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/3_scripting/3_gml_overview/language_features/if.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F3_gml_overview%2Flanguage_features%2Fif.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F3_gml_overview%2Flanguage_features%2Fif.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>If / Else and Conditional Operators</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p>A fundamental feature of most programing languages is the
+ability to ask a simple question that gives a <tt>true</tt> or
+<tt>false</tt> answer, and in GML this is achieved using the
+<tt>if</tt> keyword. A simple <tt>if</tt> statement takes this
+form:</p>
+
+<p class="code">if (&lt;expression&gt;) {&lt;statement&gt;}</p>
+
+<p><br>
+Here you are saying that if an expression resolves as <tt>true</tt>
+then do something. You can also use the <tt>else</tt> keyword to so
+something else if the expression being checked returns
+<tt>false</tt>. This "<tt>if... else...</tt>" form looks like
+this:</p>
+
+<p class="code">if (&lt;expression&gt;) {&lt;statement&gt;} else
+{&lt;statement&gt;}</p>
+
+<p><br>
+In this case the expression will be evaluated, and if the (rounded)
+value is &lt; = 0 ( it's <tt>false</tt>) the statement after else
+is executed, otherwise the initial statement is executed (it's
+<tt>true</tt>). It is a good habit to always put curly brackets
+around the statements in the <tt>if</tt> (otherwise only the first
+statement will be executed), and take a new line in the block for
+each statement, so the end code will have this form:</p>
+
+<p class="code">if (&lt;expression&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+As a small example, consider the following code which will move the
+instance towards the position <tt>x=200</tt> in the room:</p>
+
+<p class="code">if (x &lt; 200)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x += 4;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+else<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x -= 4;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+Note that you can also do <i>compound</i> checks in an if, ie:
+check various values or expressions in the same statement. These
+checks can use the various <a href=
+"../13_expressions.html">Combining Operators</a>
+(<tt>&amp;&amp;</tt> and, <tt>||</tt> or, and <tt>^^</tt> xor).
+When you do this, <i>GameMaker Studio 2</i> will evaluate each of
+them one at a time, and if depending on how they evaluate, then the
+rest may be skipped. For example:</p>
+
+<p class="code">if (keyboard_check_pressed(vk_enter) &amp;&amp;
+instance_exists(obj_Player))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;go = false<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alarm[0] = room_speed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+Here we are checking using the <tt>&amp;&amp;</tt> "and" operator,
+so it's checking of both of the conditions in the <tt>if</tt>
+evaluate to <tt>true</tt>, and if the first one is <tt>false</tt>
+then the second one won't even be checked.</p>
+
+<p><br>
+</p>
+
+<h2>Conditional Operators</h2>
+
+<p><br>
+</p>
+
+<p>You can also perform <b>conditional operations</b> (also know as
+<b>ternary</b> operations), which are essentially a "shortcut" way
+of performing a basic <tt>if</tt>. It has the following syntax</p>
+
+<p class="code">variable = condition ? &lt;expression1 (if
+<i>true</i>)&gt; : &lt;expression2 (if <i>false</i>)&gt;</p>
+
+<p><br>
+The conditional operator will return one of two given values
+depending on whether the condition evaluates to <tt>true</tt> or
+<tt>false</tt>, for example:</p>
+
+<p class="code">var temp_x = x &lt; (room_width / 2) ? 32:
+(room_width - 32);</p>
+
+<p><br>
+The above code will check the value of "x" against the value of
+half the room width and then if it is less it will set "temp_x" to
+32 otherwise "temp_x" will be room width - 32. Here are a few more
+examples of use:</p>
+
+<p class="code">draw_text(x, y, "The fee is " + (global.Member ?
+"$2.00" : "$10.00"));<br>
+path_start((global.level &gt; 10 ? path_hard : path_easy;), 2,
+path_action_reverse, true);<br>
+--hp &lt;= 0 ? instance_destroy() : score += 10;</p>
+
+<p><br>
+It is worth noting that you can nest conditional operations but
+that if you do then each operation will need to be enclosed in
+brackets, for example:</p>
+
+<p class="code">var c = a ? "foo" : (b ? "bar" : "wii"); //
+Correct<br>
+var c = a ? "foo" : b ? "bar" : "wii";&nbsp;&nbsp; // Will cause an
+error</p>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href=
+"../15_language_features.html">Language Features</a></div>
+
+<div style="float:right">Next: <a href=
+"repeat.html">Repeat</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>Configurations</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+<link rel="stylesheet" href="../../../../files/helpindex.css" type=
+"text/css">
+<link rel="stylesheet" href="../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/2_interface/3_settings/configurations.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../index.html?page=source%2F_build%2F2_interface%2F3_settings%2Fconfigurations.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../index.html?page=source%2F_build%2F2_interface%2F3_settings%2Fconfigurations.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>Configurations</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p>Due to the demands of cross platform development and the need
+for one product to be available and customised for different
+clients or devices or platforms, <i>GameMaker Studio 2</i> includes
+<b>configurations</b> to make things simpler. Using this system,
+you can quickly switch between different splash screens, icons and
+included files and test or export only those that are relevant to
+the target platform or client at any time, all from the same base
+code.</p>
+
+<p>To be able to deal with the different demands from clients and
+platforms you can use the <b>Configuration Editor</b> which is
+accessible from the <i>Extras</i> menu on the <a href=
+"../../1_overview/2_quick_start/4_assets.html">Asset Browser</a>:
+<img class="center" src="images/configs_open_editor.png" alt=
+"Open The Configuration Editor"></p>
+
+<p>All games made in <i>GameMaker Studio 2</i> start with a
+"default" configuration, which is listed in the editor when you
+first open it: <img class="center" src="images/configs.png" alt=
+"The Configuration Editor"></p>
+
+<p>To set up your configurations it is recommended that you first
+prepare this "default" config by incorporating <i>all</i> the
+configurable assets for the project into it. To do this, simply go
+through the following list of options and set them to what is
+required by default:</p>
+
+<ul>
+<li><a href="../../2_interface/1_editors/extensions.html">Extension
+Options</a>: Set the various "Copy to..." fields to the required
+platforms for the configuration. Any "Proxy" files created here
+will have their "Target" platform linked to the configuration
+too.<br>
+<br></li>
+
+<li><a href="../../2_interface/1_editors/sprites.html">Sprite
+Editor</a>: Set the texture group that you want the sprites to be
+added to.<br>
+<br></li>
+
+<li><a href="../../2_interface/1_editors/tilesets.html">Tileset
+Editor</a>: Set the texture group that you want the tilesets to be
+added to.<br>
+<br></li>
+
+<li><a href="../../2_interface/1_editors/fonts.html">Font
+Editor</a>: Set the texture group that you want the fonts to be
+added to.<br>
+<br></li>
+
+<li><a href="textures.html">Texture Group Manager</a>: Here you can
+set any of the properties on a per-configuration bases, including
+the parent group that a texture group belongs to.<br>
+<br></li>
+
+<li><a href="audio.html">Audio Group Manager</a>: The sounds that
+are assigned to the different audio groups is confiugurable
+here..<br>
+<br></li>
+
+<li><a href="included_files.html">Included Files</a>: Set the "Copy
+to..." field to the required platforms for the configuration.</li>
+</ul>
+
+<p><br>
+Once you have set up the default configuration, you can then add a
+new one to the Configuration Editor by right clicking <img style=
+"vertical-align:middle" src="../../images/icon_rmb.png"> on the
+configurations folder and selecting <b>Add Config</b>, or by
+clicking the "Create" button at the bottom of the window. The new
+configuration will be shown as a "child" of the default config -
+<i>all</i> user defined configurations are children of the default
+- and you can give it an appropriate name.</p>
+
+<p>To edit the config, you must either double click <img style=
+"vertical-align:middle" src="../../images/icon_lmb.png"> on it or
+use the right mouse button <img style="vertical-align:middle" src=
+"../../images/icon_rmb.png"> menu option "Set Config", which will
+select the configuration in the editor and once that has been done,
+you can go ahead and customise it. This is done by simply going
+through the options listed above and changing them to the desired
+settings for the newly created configuration. <i>GameMaker Studio
+2</i> will store these values automatically for the config, and you
+can change between configs at any time by simply using the RMB
+<img style="vertical-align:middle" src="../../images/icon_rmb.png">
+menu option or double clicking <img style="vertical-align:middle"
+src="../../images/icon_lmb.png">.</p>
+
+<p>Further configurations can be added as either children of the
+default configuration, or children of the user defined
+configurations that you've created, depending on which
+configuration has been highlighted in the editor when you created
+it. In the example image below, you can see we have three custom
+configs defined, two of which are children of the default config,
+and another that is the child of a user defined config: <img class=
+"center" src="images/configs_children.png" alt=
+"Child Configurations In The Configuration Editor"></p>
+
+<p>It is worth noting that you can use any given configuration with
+any given target platform when compiling or testing your projects.
+This is done by selecting the config you require from within the
+<b>Targets Window</b> of the <a href=
+"../../1_overview/2_quick_start/6_compiling.html">Target
+Manager</a>: <img class="center" src=
+"images/configs_targetmanager.png" alt=
+"Configurations In The Target Manager"></p>
+
+<p>You can also open the Configuration Editor at any tme from the
+Target Manager by clicking the button at the top right (as shown in
+the image above).</p>
+
+<p>Once you have set a configuration to be used in this way, any
+time you compile to a target, either for testing or to create a
+final asset package, the chosen configuration will be used. For
+more information on the Targets Window, please see the section on
+<a href=
+"../../1_overview/2_quick_start/6_compiling.html">Compiling</a>.</p>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href="index.html">Settings
+Index</a></div>
+
+<div style="float:right">Next: <a href=
+"included_files.html">Included Files</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>Sequence Events And Moments</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/3_scripting/4_gml_reference/sequences/sequence events.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Fsequences%2Fsequence%20events.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Fsequences%2Fsequence%20events.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>Sequence Events And Moments</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p>Apart from all the properties listed <a href=
+"index.html">here</a> for a sequence struct, you also have the
+possibility of adding in special "action" properties to a sequence.
+There are three different types of these "action" properties that
+can be added to a sequence object - <b>Events</b>. <b>Moments</b>
+and <b>Broadcast Messages</b> - and each of these is explained in
+more detail in the sections below.</p>
+
+<blockquote><a name="events" id="events"></a> <label class=
+"collapse" for="1">Events</label> <input id="1" type="checkbox">
+<div class="index_list">
+<p>Sequence objects can have <b>events</b> added to them, and these
+events are analogous to the events used by object assets. The
+events you assign to a sequence object will occur in a specific
+order, either once at a defined moment in the sequence life-cycle,
+or every frame that the sequence is running. In this section, we
+discuss how these events are handled using code, but they can also
+be added using the <a href=
+"../../../2_interface/1_editors/sequences.html">Sequence
+Editor</a>. Note that that the order of events listed here is not
+influenced by the playhead direction, and even if the sequence is
+playing backwards, the events will still be run in the order given
+below.</p>
+
+<p>The available events are:</p>
+
+<ul>
+<li><b>Create</b>: this is triggered when a sequence instance is
+created on a layer.<br>
+<br></li>
+
+<li><b>Destroy</b>: this is triggered when a sequence instance on a
+layer is destroyed.<br>
+<br></li>
+
+<li><b>Clean-up</b>: this is triggered when a sequence instance is
+garbage collected.<br>
+<br></li>
+
+<li><b>Step</b>: triggered just before the usual object step event.
+<b>Important!</b> If the sequence is paused then this event will
+not be triggered until the next step after the sequence starts
+playing again.<br>
+<br></li>
+
+<li><b>Begin Step</b>: triggered just before the object begin-step
+event. <b>Important!</b> If the sequence is paused then this event
+will not be triggered until the next step after the sequence starts
+playing again.<br>
+<br></li>
+
+<li><b>End Step</b>: triggered just before the object end-step
+event. <b>Important!</b> If the sequence is paused then this event
+will not be triggered until the next step after the sequence starts
+playing again.<br>
+<br></li>
+
+<li><b>Async System</b>: triggered the same as any object <a href=
+"../../../2_interface/1_editors/events/async_events.html">Asynchronous
+System Event</a> handlers. <b>Important!</b> If the sequence is
+paused then this event will not be triggered.<br>
+<br></li>
+
+<li><b>Broadcast Message</b>: triggered during sequence update as a
+broadcast message keyframe is encountered.<br>
+<br></li>
+</ul>
+
+<p>All events need to be associated with functions that are defined
+in a script, so to set up an event a <a href=
+"../../3_gml_overview/variable_scope/method_variables.html">method
+variable</a> must be assigned to a property with the correct name
+that tells the sequence which event should call the function. The
+syntax for this is as follows:</p>
+
+<p class="code">&lt;sequence_struct&gt;.&lt;event_property&gt; =
+method(&lt;sequence_struct&gt;, &lt;function_name&gt;);</p>
+
+<p><br>
+The sequence struct properties for the different events are as
+follows:</p>
+
+<ul>
+<li><tt>event_create</tt>
+</li>
+
+<li><tt>event_destroy</tt>
+</li>
+
+<li><tt>event_clean_up</tt>
+</li>
+
+<li><tt>event_step</tt>
+</li>
+
+<li><tt>event_step_begin</tt>
+</li>
+
+<li><tt>event_step_end</tt>
+</li>
+
+<li><tt>event_async_system</tt>
+</li>
+
+<li><tt>event_broadcast_message</tt>
+</li>
+</ul>
+
+<p>To give an example of use, let's say we want the sequence to
+reverse direction when a left mouse button click is detected. We
+would first need to create a script with the function that we want
+to call, something like this:</p>
+
+<p class="code">/// @function seq_reverse();<br>
+<br>
+function seq_reverse()<br>
+{<br>
+if mouse_check_button_pressed(mb_left)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if self.headDirection == seqdir_right<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.headDirection
+= seqdir_left;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else self.headDirection = seqdir_right;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br></p>
+
+<p><br>
+In this function all we're doing is listening for a mouse press and
+then reversing the playback direction of the sequence that the
+method has been bound to. You'll notice that currently you are not
+able to pass any parameters to the functions which are linked to
+these properties, and in all cases the <tt>self</tt> variable
+within the scope of the function is assigned to be the sequence
+instance.</p>
+
+<div class="note"><b>NOTE</b>: It's worth noting that in the above
+script the <tt>self</tt> identifier can be omitted and is only used
+to explicitly show the scope of the method variable being
+used.</div>
+
+<p><br>
+To assign this to a sequence you would then do something like
+this:</p>
+
+<p class="code">var _seq = sequence_get(Sequence1);<br>
+_seq.event_step = method(_seq, seq_reverse);<br></p>
+
+<p>We have now assigned a step event to the sequence <i>object</i>
+with a function to detect when a mouse is pressed and then change
+the playhead direction of the sequence <i>instance</i> after it has
+been created in a room.</p>
+</div>
+<br>
+<a name="moments" id="moments"></a> <label class="collapse" for=
+"2">Moments</label> <input id="2" type="checkbox">
+<div class="index_list">
+<p>A sequence <b>moment</b> is a unique code action that is fired
+on one or more specified frames as the sequence plays. These code
+moments are - like with events (explained above) - simply
+predefined <a href=
+"../../3_gml_overview/variable_scope/method_variables.html">method
+variables</a> that are triggered on the given frame. For example,
+say you want a sequence to create a "bullet" instance on a specific
+frame of the animation - first you'd need to create the function
+that is to be used for this action, something like this:</p>
+
+<p class="code">/// @function seq_shoot();<br>
+<br>
+seq_shoot = function()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;instance_create_layer(sequence.xorigin,
+sequence.yorigin, "Instances", obj_Bullet);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+You would then add this to a frame in the <tt>momentKeyframes</tt>
+property of the sequence struct. This is essentially a "special"
+track that is only used for this purpose and so can only take
+keyframe data that is associated with moment actions that you want
+the sequence to have. This track is created in much the same way as
+you would create any other track, by creating keyframe structs and
+filling them with keyframe data, where channel 0 is the only
+channel that you can use and the track type is
+<tt>seqtracktype_moment</tt>. Below is an example of how this would
+be created, using the function we defined above to fire on the
+given moments (frames):</p>
+
+<p class="code">var _seq = sequence_get(my_Seq);<br>
+var _k = array_create(3);<br>
+_k[0] = sequence_keyframe_new(seqtracktype_moment);<br>
+_k[0].frame = 60;<br>
+_k[1] = sequence_keyframe_new(seqtracktype_moment);<br>
+_k[1].frame = 120;<br>
+_k[2] = sequence_keyframe_new(seqtracktype_moment);<br>
+_k[2].frame = 180;<br>
+var _d = array_create(1);<br>
+_d[0] = sequence_keyframedata_new(seqtracktype_moment);<br>
+_d[0].channel = 0;<br>
+_d[0].event = method(_d[0], seq_shoot);<br>
+_k[0].channels = _d;<br>
+_k[1].channels = _d;<br>
+_k[2].channels = _d;<br>
+_seq.momentKeyframes = _k;<br></p>
+
+<p><br>
+The above code will simply set frames 60, 120, and 180 of the
+"moment" track to call the method <tt>seq_shoot</tt>. You'll notice
+that currently you are not able to pass any parameters to the
+functions which are used for each moment, and in all cases the
+<tt>self</tt> variable within the scope of the function is assigned
+to be the sequence instance (you generally don't need to use
+<tt>self</tt> but under some special cases it may be useful).</p>
+</div>
+<br>
+<a name="messages" id="messages"></a> <label class="collapse" for=
+"3">Broadcast Messages</label> <input id="3" type="checkbox">
+<div class="index_list">
+<p>Sequences can be made to generate <b>broadcast messages</b>,
+which simple strings that are added to specific frames along the
+animation timeline, and when that point in the timeline is reached,
+then the string will be broadcast out to all object instances that
+listen for it. You can add these messages in the IDE using the
+<a href="../../../2_interface/1_editors/sequences.html">Sequence
+editor</a>, but they can also be created and edited using code.</p>
+
+<p>To create a broadcast message on a sequence using GML, you need
+to add them to a frame in the <tt>messageEventKeyframes</tt>
+property of the sequence struct. This is essentially a "special"
+track that is only used for this purpose and so can only take
+keyframe data that is associated with the broadcast messages that
+you want the sequence to have. This track is created in much the
+same way as you would create any other track, by creating keyframe
+structs and filling them with keyframe data, where channel 0 is the
+only channel that you can use and the track type is
+<tt>seqtracktype_message</tt>. Below is an example of how this
+would be created:</p>
+
+<p class="code">var _seq = sequence_get(my_Seq);<br>
+var _k = array_create(2);<br>
+_k[0] = sequence_keyframe_new(seqtracktype_message);<br>
+_k[0].frame = 60;<br>
+_k[1] = sequence_keyframe_new(seqtracktype_message);<br>
+_k[1].frame = 120;<br>
+var _m1 = array_create(2);<br>
+_m1[0] = "Hello";<br>
+_m1[1] = "World";<br>
+var _m2 = array_create(1);<br>
+_m2[0] = "This is a Broadcast Message";<br>
+var _d1 = array_create(1);<br>
+_d1[0] = sequence_keyframedata_new(seqtracktype_message);<br>
+_d1[0].channel = 0;<br>
+_d1[0].events = _m1;<br>
+var _d2 = array_create(1);<br>
+_d2[0] = sequence_keyframedata_new(seqtracktype_message);<br>
+_d2[0].channel = 0;<br>
+_d2[0].events = _m2;<br>
+_k[0].channels = _d1;<br>
+_k[1].channels = _d2;<br>
+_seq.messageEventKeyframes = _k;</p>
+
+<p><br>
+You'll notice that the message text is passed to the keyframe data
+channel as an array. This is because you can broadcast multiple
+messages on the same frame, and have different object instances
+listen for them and react differently depending on the message they
+are actually expecting.</p>
+
+<p>Once a broadcast message has been emitted by the sequence, you
+can parse it using the <i>Other</i> &gt; <i>Broadcast Message</i>
+event in object instances, which is explained in detail <a href=
+"../../../2_interface/1_editors/sequences/broadcast%20messages.html">
+here</a>.</p>
+</div>
+<br></blockquote>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href=
+"index.html">Sequences</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

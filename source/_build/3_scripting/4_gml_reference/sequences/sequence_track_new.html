@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>sequence_track_new</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/3_scripting/4_gml_reference/sequences/sequence_track_new.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Fsequences%2Fsequence_track_new.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Fsequences%2Fsequence_track_new.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>sequence_track_new</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<h3>Description</h3>
+
+<blockquote>
+<p>With this function you can create a new sequence track struct,
+supplying the type of track that you wish to make which will be one
+of the following constants:</p>
+
+<div class="compat">
+<table>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+<th>Value</th>
+</tr>
+
+<tr>
+<td>seqtracktype_graphic</td>
+<td>This is a graphics (sprite) asset track.</td>
+<td>1</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_audio</td>
+<td>This is an audio asset track.</td>
+<td>2</td>
+</tr>
+
+<tr>
+<td>seqtracktype_instance</td>
+<td>This is an instance asset track.</td>
+<td>14</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_sequence</td>
+<td>This is a sequence asset track.</td>
+<td>7</td>
+</tr>
+
+<tr>
+<td>seqtracktype_clipmask</td>
+<td>This is a clip mask group asset track.</td>
+<td>8</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_clipmask_mask</td>
+<td>This is a clip mask sprite asset track used for generating the
+clip mask.</td>
+<td>9</td>
+</tr>
+
+<tr>
+<td>seqtracktype_clipmask_subject</td>
+<td>This is a clip mask sprite asset track that is being
+masked.</td>
+<td>10</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_group</td>
+<td>This group folder asset track.</td>
+<td>11</td>
+</tr>
+
+<tr>
+<td>seqtracktype_colour</td>
+<td>This is a colour data parameter track.</td>
+<td>4</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_real</td>
+<td>This is a real number value parameter track.</td>
+<td>3</td>
+</tr>
+
+<tr>
+<td>seqtracktype_message</td>
+<td>This is a broadcast message track.</td>
+<td>15</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_moment</td>
+<td>This is an event/moment track.</td>
+<td>16</td>
+</tr>
+
+<tr>
+<td>seqtracktype_bool</td>
+<td>Not used currently.</td>
+<td>5</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_string</td>
+<td>Not used currently.</td>
+<td>6</td>
+</tr>
+
+<tr>
+<td>seqtracktype_spriteframes</td>
+<td>Not used currently.</td>
+<td>13</td>
+</tr>
+
+<tr class="alt">
+<td>seqtracktype_empty</td>
+<td>Not used currently.</td>
+<td>12</td>
+</tr>
+</table>
+</div>
+<br>
+
+<p>The function will return a sequence track struct which can then
+have data added to it before being assigned to a sequence object.
+For more information please see <a href="index.html">here</a>.</p>
+</blockquote>
+
+<p><br>
+</p>
+
+<h3>Syntax:</h3>
+
+<p class="code">sequence_track_new(type);</p>
+
+<div class="param">
+<table>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+
+<tr>
+<td>type</td>
+<td>The type of track to create, a constant, listed above.</td>
+</tr>
+</table>
+</div>
+
+<p><br>
+</p>
+
+<h3>Returns:</h3>
+
+<p class="code">Struct</p>
+
+<p><br>
+</p>
+
+<h3>Example:</h3>
+
+<p class="code">myseq = sequence_create();<br>
+var mytracks = array_create(1);<br>
+mytracks[0] = sequence_track_new(seqtracktype_graphic);<br>
+var graphickeys = array_create(1);<br>
+graphickeys[0] = sequence_keyframe_new(seqtracktype_graphic);<br>
+graphickeys[0].frame = 0;<br>
+graphickeys[0].length = 1;<br>
+graphickeys[0].stretch = true;<br>
+graphickeys[0].disabled = false;<br>
+var graphickeydata = array_create(1);<br>
+graphickeydata[0] =
+sequence_keyframedata_new(seqtracktype_graphic);<br>
+graphickeydata[0].spriteIndex = spr_Platform;<br>
+graphickeydata[0].channel = 0;<br>
+graphickeys[0].channels = graphickeydata;<br>
+mytracks[0].name = "TestGraphicTrack";<br>
+mytracks[0].keyframes = graphickeys;<br>
+myseq.tracks = mytracks;<br></p>
+
+<blockquote>
+<p>The above code creates a new sequence and then creates a graphic
+asset track and sets some keyframe data on the track. This track is
+then assigned to the instance.</p>
+</blockquote>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href=
+"index.html">Sequences</a></div>
+
+<div style="float:right">Next: <a href=
+"sequence_keyframe_new.html">sequence_keyframe_new</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

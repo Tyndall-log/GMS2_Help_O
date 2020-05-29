@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>The Sequence Canvas</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/2_interface/1_editors/sequences/the sequence canvas.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences%2Fthe%20sequence%20canvas.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences%2Fthe%20sequence%20canvas.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>The Sequence Canvas</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p>When creating sequences for your projects a large part of the
+work will be done in the <b>canvas</b> of the Sequence Editor. The
+canvas is simply the area that will be used to contain the sequence
+elements, and it also defines what will be shown when the sequence
+is added to a room to be displayed. When you first create a
+sequence, the canvas will be set to the default size of 1366px by
+768px, but this can be changed from the <b>Toolbox</b> by clicking
+the <img style="vertical-align:middle" src=
+"../images/icon_canvasoptions.png"> beside the <b>Canvas Frame
+Toggle</b> button: <img class="center" src=
+"../images/editor_sequences_canvascontrols.png" alt=
+"Sequence Editor Canvas Options"></p>
+
+<p>The canvas size defines a visual area within which to place the
+assets that make up the sequence, but the frame is simply a guide
+to size and will not affect how things are rendered, ie: if you
+place a sprite asset outside the frame and add the sequence to a
+room, the asset will <i>still</i> be rendered. The frame is also
+used to house any <b>reference images</b> that you want to use to
+guide the positioning of assets within the sequence. A reference
+image can be added from the same Canvas Options menu where you set
+the size of the canvas frame, and will be used as a background
+image for the sequence canvas. this permits you to position things
+according to - for example - a UI mock-up from a project artist:
+<img class="center" src="images/canvas_reference.png" alt=
+"The Canvas With A Reference Image"></p>
+
+<p>Note that reference images are <i>not</i> stored with the
+project and will not be rendered when the sequence is added to a
+room.</p>
+
+<p>Once you have the canvas set up how you want you can start to
+add assets to it. This is done simply by dragging them from the
+<b>Asset Browser</b> into the canvas, which will create an <b>Asset
+Track</b> in the <a href="the%20track%20panel.html">Track
+Panel</a>:<br>
+<br>
+<img class="center" src="images/canvas_add_asset.gif" alt=
+"Adding An Asset To The Canvas"></p>
+
+<p><br>
+The assets that can be added to a sequence are as follows:</p>
+
+<ul>
+<li>Sprites</li>
+
+<li>Objects</li>
+
+<li>Sounds</li>
+
+<li>Sequences</li>
+</ul>
+
+<p>Once you have added the assets that are required, they can be
+placed at their initial positions for the animation, and can also
+be transformed using the various different <b>Transform Control
+Widgets</b>. These are accessed in two different ways:</p>
+
+<ul>
+<li>By moving the mouse to the edges of the asset in the canvas and
+clicking <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> and dragging (note that the cursor
+will change to show the different transforms that will be
+changed):<br>
+<br>
+<img class="center" src="images/canvas_edit_transforms.gif" alt=
+"Transforming The Asset In The Canvas"><br></li>
+
+<li>By using the transform widget at the origin of the asset, which
+you can change from the canvas <b>Toolbox</b>:<br>
+<br>
+<img class="center" src="images/canvas_edit_widgets.gif" alt=
+"Using The Transform Widget And The Toolbox"></li>
+</ul>
+
+<p>When you have set the initial transforms for the asset (if
+required) you can then use the canvas to add <b>keys</b> to the
+asset track in the Track Panel. A simple example of how this works
+would be a simple position transform, where you would place the
+asset at it's start position, then move the playhead in the <b>Dope
+Sheet</b> to the frame you want the movement to end, then move the
+asset again:<br>
+<br>
+<img class="center" src="images/canvas_add_keys.gif" alt=
+"Adding A Parameter Key To An Asset In The Canvas"></p>
+
+<p>As you can see in the image above, the new positions are
+automatically being recorded on the track as we have enabled
+"Automatically Record Changes" <img style="vertical-align:middle"
+src="../images/icon_seq_record.png"> in the Track Panel. You can
+also see that a dotted line has been added to the canvas view to
+indicate the movement through time of the asset. If you do not have
+the automatic recording enabled, you can still add points by moving
+the asset, then setting the playhead and then finally clicking the
+"Record a new key" <img style="vertical-align:middle" src=
+"../images/icon_seq_add.png"> button.</p>
+
+<p>One final point worth mentioning is that the canvas permits you
+to use and add <b>smart guides</b>, which are guidelines that can
+be added to the canvas so that assets can be aligned against them.
+By default the canvas will show horizontal and vertical guides
+around the center point, as well as a rectangular guide around the
+"edge" of the sequence canvas, based on the size of the canvas.
+These guides will <i>not</i> be rendered in the final sequence when
+added to a room and are just there to help you get an idea of space
+and to help position things. You can also add your own guides by
+clicking <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> on a ruler and then dragging into
+the canvas:<br>
+<br>
+<img class="center" src="images/canvas_adding_guides.gif" alt=
+"Adding Guides To The Canvas"></p>
+
+<p><br>
+To remove a guide, simply click on it and then drag it back towards
+the rulers again. When you have guides added to a sequence, moving
+an asset around will then "snap" to the guide when the bounding box
+or origin is near enough, and extra <b>smart guides</b> will be
+shown to mark the distances between assets as well as to mark
+assets that are all on the same guide or at the same position
+(these are coloured differently):<br>
+<br>
+<img class="center" src="images/canvas_smart_guides.gif" alt=
+"Canvas SMart Guides"></p>
+
+<p><br>
+<br>
+<br>
+</p>
+
+<h2>RMB Menu And Navigation</h2>
+
+<p><br>
+</p>
+
+<p>To navigate around the canvas view, you can use the same basic
+controls as the for a regular Workspace, ie: Use the middle mouse
+button <img style="vertical-align:middle" src=
+"../../../images/icon_mmb.png"> and drag to pan the canvas (or
+alternatively use the space key and the left mouse button
+<img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png">), and you can scroll horizontally
+with the mouse wheel <img style="vertical-align:middle" src=
+"../../../images/icon_mmb.png"> or zoom in and out using the
+<img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> key and
+the mouse wheel <img style="vertical-align:middle" src=
+"../../../images/icon_mmb.png">.</p>
+
+<p>To select an asset, simply click the left mouse button
+<img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> on it, or you can select multiple
+assets using <img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> and
+<img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> to click on each asset. You can
+also select multiple assets using <img style=
+"vertical-align:middle" src="../../../images/icon_shift.png"> and
+then clicking <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> and dragging. This will create a
+"box" in the canvas and any asset that touches the box area will be
+selected.</p>
+
+<p>When you have an asset or assets selected, you can cut, copy and
+paste them using the <img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> + "X",
+<img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> + "C"
+and <img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> + "V"
+key combinations.</p>
+
+<p>Note that when multiple assets are selected in the canvas, there
+will be a bounding box shown for each asset, and a larger bounding
+box shown for all of them combined. You can change how this
+bounding box behaves from the icons at the top left corner:
+<img class="center" src="images/canvas_bbox_controls.png" alt=
+"Combined Selection BBox Controls"></p>
+
+<p>Clicking on the circle icon will change the transform control
+widget to the origin of the <i>full</i> bounding box for all
+instances selected, while clicking the box icon will show an
+individual control widget for each asset in the selection. You can
+move grouped assets around and copy/paste them etc... just as you
+would for a single asset.</p>
+
+<p>If you have multiple assets that are overlapping and wish to
+select a specific one without disturbing the rest, then you can
+hover the mouse over them to bring up the <b>Item Toolbox</b> which
+will show a list of icons for each item under the mouse. You can
+then click on one of these items to select it and edit it:<br>
+<br>
+<img class="center" src="images/canvas_item_toolbox.gif" alt=
+"The Item Toolbox"></p>
+
+<p><br>
+You also have a number of additional options available to you from
+the right mouse button <img style="vertical-align:middle" src=
+"../../../images/icon_rmb.png"> when you click it on any asset in
+the sequence: <img class="center" src="images/canvas_rmb_menu.png"
+alt="Canvas Asset RIght Mouse Button Menu"></p>
+
+<p>The options available here are:</p>
+
+<ul>
+<li><b>Record</b>: this option permits you to record parameter keys
+for the asset(s), and if you hover over it you'll see options to
+record the <i>scale</i>, <i>rotation</i> or <i>position</i>.<br>
+<br></li>
+
+<li><b>Group</b>: Selecting this will create a new group folder in
+the Track Panel, and move the selected asset(s) into it.<br>
+<br></li>
+
+<li><b>Rename</b>: When you click this, the track will be
+highlighted in the Track Panel, and the name will be made editable,
+ready for you to change it.<br>
+<br></li>
+
+<li><b>Find In Sheet</b>: When you click this, the selected asset
+will have it's key highlighted in the Dope Sheet.<br>
+<br></li>
+
+<li><b>Find Other</b>: When you click this, a list of all other
+assets of the same type will be shown for you to select one
+from.<br>
+<br></li>
+
+<li><b>Select</b>: When you click this, a list of all assets that
+are overlapping at the clicked position will be shown, and you can
+select any of them for editing.<br>
+<br></li>
+
+<li><b>Remove Key</b>: When you select this, the asset track key
+will be removed from the dope sheet at the current playhead
+position. The track itself will still exist, as will any parameter
+tracks it contains, and you can re-add another asset to the track
+by dragging it from the Asset Browser into the dope sheet.<br>
+<br></li>
+
+<li><b>Remove Track</b>: This will remove the asset track (and
+parameter tracks if any are assigned to it) from the Track Panel,
+as well as all the keys related to it in the Dope Sheet.<br>
+<br></li>
+
+<li><b>Open Editor</b>: This will open the asset for editing in the
+default editor for the type of asset.</li>
+</ul>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href="../sequences.html">The
+Sequences Editor</a></div>
+
+<div style="float:right">Next: <a href=
+"the%20track%20panel.html">The Track Panel</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>The Sequences Editor</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+<link rel="stylesheet" href="../../../../files/helpindex.css" type=
+"text/css">
+<link rel="stylesheet" href="../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/2_interface/1_editors/sequences.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>The Sequences Editor</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p><img class="center" src="images/editor_sequences.png" alt=
+"The Sequences Editor">
+</p>
+
+<p>A <b>sequence</b> is essentially a collection of assets that
+perform a dynamic animation over time. They can contain sprites,
+instances, sounds and other things, and each of these can be set to
+move or change colour, or start/stop animating over time within the
+sequence itself. The assets you add are assigned to specific
+<b>tracks</b> within the sequence and these tracks can then have
+different attributes applied to them - called <b>keys</b> - which
+can be static or change over time. All editing of a sequence takes
+place in the <b>Sequence Editor</b> which is essentially comprised
+of three areas:</p>
+
+<ul>
+<li>the <b>Canvas</b> - where you place the assets that make up the
+sequence</li>
+
+<li>the <b>Track Panel</b> - where you add/remove asset tracks and
+parameter tracks to your sequence</li>
+
+<li>the <b>Dope Sheet</b> - where you add/remove/edit the keyframes
+of the tracks and control how they behave over time.</li>
+</ul>
+
+<p>Note too that you can have sequences within sequences to create
+complex animations and effects, and sequences can also be accessed
+and changed through code to give you as much control as possible
+over how they will be displayed and used in your game. For more
+information on the coded aspect of sequences, please see the
+section on the <a href=
+"../../3_scripting/4_gml_reference/sequences/index.html">Sequences
+Functions</a>.</p>
+
+<p>Before continuing to explain the details of the editor, we'll
+take a moment to explain how a sequence is created as well as some
+keywords that are used in the descriptions so you'll have a more
+thorough understanding of how the Sequences Editor works. The
+general workflow for creating a sequence is as follows:</p>
+
+<ul>
+<li>First you'd create your sequence from the Asset Browser, which
+will open it the Sequences Editor.<br>
+<br></li>
+
+<li>Next you'd drag an asset (sprite, object, sound or sequence)
+into the editor canvas.<br>
+<br></li>
+
+<li>This will create an <b>Asset Track</b> in the <b>Track
+Panel</b> panel, and add an <b>Asset Key</b> to the <b>Dope Sheet
+Editor</b>. The asset track is simply the name of the track that
+contains the asset, while the asset key is a bar that is drawn to
+symbolise the number of frames that the asset will be animated over
+in the sequence.<br>
+<br></li>
+
+<li>At this point, you'll usually want to position the asset in the
+canvas at its initial position for the start of the sequence, and
+add in any initial transforms, like scale or rotation.<br>
+<br></li>
+
+<li>When you are happy with the initial settings, you will want to
+record the <b>parameter keys</b> - which is simply the name given
+to the values for scale, rotation and position that a specific
+asset key has at a any point in the dope sheet timeline.<br>
+<br></li>
+
+<li>Next you'd change the position of the <b>playhead</b> (the
+current play position in the dope sheet timeline) and then move or
+change the asset transforms and record another parameter key.<br>
+<br></li>
+
+<li>All parameter keys are stored in additional <b>parameter
+tracks</b> which are a subset of tracks under the main track in the
+Track Panel, and you can edit the parameter key data for each
+parameter in the track editor.<br>
+<br></li>
+
+<li>Now you would repeat the above process for the length of the
+sequence, moving, rotating and scaling the asset as required, and
+then adding more assets as you need them.</li>
+</ul>
+
+<p>Below you can find an overview of each of the features of the
+sequence editor, and at the bottom of this page are links to pages
+that explain the three main features in more depth:</p>
+
+<blockquote><a name="canvas_rulers" id="canvas_rulers"></a>
+<label class="collapse" for="1">Rulers / Guides</label> <input id=
+"1" type="checkbox">
+<div class="index_list">
+<p>The rulers along the edge of the canvas show you the position of
+the things that are placed within it, and are marked from (0, 0)
+which is the <i>center</i> of the canvas and the default origin for
+the sequence. You can click and drag on the rulers to pull a
+horizontal or vertical <b>guide</b> into the sequence, and this
+guide can then be used to accurately position the different assets
+that are being used, as moving an asset close to one will "snap" it
+to the guide. While positioning assets within the sequence,
+<b>smart</b> guides will also be temporarily shown indicating the
+distance between assets, as well as the distance from the sequence
+boundary or center point. <img class="center" src=
+"images/editor_sequences_guides.png" alt=
+"Guides and Smart Guides in the Sequences Editor"></p>
+
+<p>Note that the boundary of the sequence and the center point
+marker lines for the sequence are also considered guides and will
+behave the same way as guides added from the rulers, with the
+exception that they cannot be edited.</p>
+
+<p>The distance that assets "snap" to guides, as well as other
+properties, can be set in the <a href=
+"../../1_overview/1_getting_started/preferences/prefs_sequences.html">
+Sequences Preferences</a>.</p>
+</div>
+<br>
+<a name="canvas_view" id="canvas_view"></a> <label class="collapse"
+for="2">Canvas View</label> <input id="2" type="checkbox">
+<div class="index_list">
+<p>The canvas view is where you can see a preview of the sequence
+canvas, and is where you can edit and position the different assets
+that make up your sequence. You can add an asset to the sequence by
+simply dragging it from the asset browser and then dropping it into
+the canvas, and this will create a new track in the Track Panel,
+and also add a <b>key</b> for the asset at the current timeline
+playhead position. The following assets can be dropped onto the
+canvas in this way:</p>
+
+<ul>
+<li>Sprites</li>
+
+<li>Objects</li>
+
+<li>Sounds</li>
+
+<li>Sequences</li>
+</ul>
+
+<p>Each asset added to the canvas can be manipulated in multiple
+ways - rotated, transformed, or translated - based on how you
+interact with it, as each asset will have a bounding box and a
+<b>transform gizmo</b> as well as <b>bounding box controls</b>.
+This is explained in more detail on the page about the <a href=
+"sequences/the%20sequence%20canvas.html">Sequence Editor
+Canvas</a>.</p>
+
+<div class="note"><b>NOTE</b>: Sound assets when added to a
+sequence are essentially sound emitters that play only the given
+sound resource.</div>
+
+<p><br>
+To navigate around the canvas view, you can use the same basic
+controls as the for general Workspace, ie: Use the middle mouse
+button <img style="vertical-align:middle" src=
+"../../images/icon_mmb.png"> and drag to pan the canvas (or
+alternatively use the space key and the left mouse button
+<img style="vertical-align:middle" src=
+"../../images/icon_lmb.png">), and you can scroll horizontally with
+the mouse wheel <img style="vertical-align:middle" src=
+"../../images/icon_mmb.png"> or zoom in and out using the
+<img style="vertical-align:middle" src=
+"../../images/icon_ctrl.png"> / <img style="vertical-align:middle"
+src="../../images/icon_cmd.png"> key and the mouse wheel
+<img style="vertical-align:middle" src=
+"../../images/icon_mmb.png">. You can also cut, copy and paste
+assets using the <img style="vertical-align:middle" src=
+"../../images/icon_ctrl.png"> / <img style="vertical-align:middle"
+src="../../images/icon_cmd.png"> + "X", <img style=
+"vertical-align:middle" src="../../images/icon_ctrl.png"> /
+<img style="vertical-align:middle" src="../../images/icon_cmd.png">
++ "C" and <img style="vertical-align:middle" src=
+"../../images/icon_ctrl.png"> / <img style="vertical-align:middle"
+src="../../images/icon_cmd.png"> + "V" key combinations.</p>
+</div>
+<br>
+<a name="broadcast_message" id="broadcast_message"></a>
+<label class="collapse" for="3">Broadcast Message</label>
+<input id="3" type="checkbox">
+<div class="index_list">
+<p>This button will add a <b>broadcast message</b> to the sequence
+timeline in the <b>dope sheet</b>, opening a dialog where you can
+add the message to be broadcast. The message will be added wherever
+the timeline playhead is in the dope sheet and consists of a simple
+string that can be picked up in the <b>Asynchronous System
+Event</b> when it is triggered and then acted on.</p>
+
+<p><img class="center" src="images/editor_sequences_broadcast.gif"
+alt="Add A broadcast message to a sequence">
+</p>
+
+<p><br>
+Once added, the message will be shown in the Dope Sheet, and you
+can click the right mouse button <img style="vertical-align:middle"
+src="../../images/icon_rmb.png"> on it to open a menu where you can
+delete the message or edit it. For more information on Broadcast
+Messages please see <a href=
+"sequences/broadcast%20messages.html">here</a>.</p>
+</div>
+<br>
+<a name="keyframe_controls" id="keyframe_controls"></a>
+<label class="collapse" for="4">Keyframe Control</label> <input id=
+"4" type="checkbox">
+<div class="index_list">
+<p>The <b>keyframe control buttons</b> are one of the ways that you
+can add, remove or edit specific keys in the <b>dope sheet</b>. The
+buttons are as follows:</p>
+
+<ul>
+<li><img style="vertical-align:middle" src=
+"images/icon_seq_split.png"> - This is the "Split selected keys"
+button. When you have selected one or more parameter keys in the
+dope sheet, you can then click this button and they will be split
+into two separate keys at the timeline playhead position:<br>
+<br>
+<img class="center" src="images/editor_sequences_split.gif" alt=
+"Split Asset and Parameter Keys"><br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"images/icon_seq_delete.png"> - This is the "Delete selected keys"
+button. When you have selected one or more parameter keys in the
+dope sheet, you can then click this button and they will be
+deleted:<br>
+<br>
+<img class="center" src="images/editor_sequences_delete.gif" alt=
+"Delete Parameter Keys"><br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"images/icon_seq_add.png"> - This is the "Record a new key" button.
+When you have selected an asset key in the dope sheet and press
+this button, new parameter keys will be added to the asset track as
+parameter tracks, and the parameter keys will be added as points in
+the dope sheet timeline at the playhead position:<br>
+<br>
+<img class="center" src="images/editor_sequences_record.gif" alt=
+"Add Parameter Keys At Playhead Position"><br>
+<br></li>
+
+<li><img style="vertical-align:middle" src=
+"images/icon_seq_record.png"> - This is the "Automatically Record
+Changes" button. When this is enabled, any changes made to the
+asset within the canvas will be automatically recorded and the
+appropriate parameter tracks and parameter keys added at the
+playhead position in the dope sheet. For example, if you move the
+playhead from frame 0 to frame 10 and then in the canvas move the
+asset 100 pixels to the right, a parameter track will be added for
+position, and the parameter keys will be added at frame 0 (the
+initial position) and at frame 10 (the playhead position) and when
+you press "Play" on the sequence, the asset will move 100px to the
+right over ten frames.<br>
+<br>
+<img class="center" src="images/editor_sequences_auto.gif" alt=
+"Automatically Record Parameter Keys"><br>
+<br></li>
+</ul>
+</div>
+<br>
+<a name="sequence_events" id="sequence_events"></a> <label class=
+"collapse" for="9">Sequence Events</label> <input id="9" type=
+"checkbox">
+<div class="index_list">
+<p>In a similar way to regular objects, sequences can have
+<b>events</b> that can run some code assigned to them. The code is
+assigned in the form of a <a href=
+"../../3_scripting/3_gml_overview/3_scripts.html">scripted
+function</a> which can take no arguments and will be called when
+the event is triggered.</p>
+
+<p>Events are added by clicking the <b>Add Event</b> button
+<img style="vertical-align:middle" src="images/icon_addevent.png">
+which will open the following window: <img class="center" src=
+"images/editor_sequences_events.png" alt=
+"Sequence Editor Add Event Window"></p>
+
+<p>The events listed here are as follows:</p>
+
+<ul>
+<li><b>Create</b> - This event happens when an instance of the
+sequence is first created, and is the very first thing that happens
+within a sequence placed in the room through the room editor when a
+room is entered.<br>
+<br></li>
+
+<li><b>Destroy</b> - This event is executed when an instance of the
+sequence is destroyed, and will be run before the Clean Up event
+(see below).<br>
+<br></li>
+
+<li><b>Clean Up</b> - This event will be called after any event
+that removes an instance of the sequence from the room. So, it will
+be triggered if the sequence is destroyed, if the room ends, or if
+the game ends, and is designed to perform any task that you need
+performed once when the sequence instance is removed from the game
+for any reason. If you have destroyed the sequence instance using,
+for example, <tt>layer_sequence_destroy()</tt>, then this event
+will be called after the Destroy Event (see above).<br>
+<br></li>
+
+<li><b>Begin Step</b> / <b>Step</b> / <b>End Step</b> - The Step
+Event is an event that is checked every single step (frame) of the
+game while the sequence instance exists, and is split into three
+parts: begin, step and end. For most things the standard step event
+will be fine to use, but sometimes you want a bit more control over
+what code runs and at what time, so for that you are provided with
+the <b>Begin</b> and <b>End</b> step events, and these events will
+always be triggered in the same order every step (frame) of the
+game. <b>Important!</b> If the sequence is paused then these events
+will <i>not</i> be triggered, and when play resumes they will be
+triggered the next frame after the sequence starts playing again.
+Also note that the order of events is not influenced by the
+playhead direction, and even if the sequence is playing backwards,
+the events will still be run as Begin, Step and End.<br>
+<br></li>
+
+<li><b>Async Event</b>: This is the equivalent of the object
+<a href=
+"../../2_interface/1_editors/events/async_events.html">Asynchronous
+System Event</a>. <b>Important!</b> If the sequence is paused then
+this event will <i>not</i> be triggered.</li>
+</ul>
+
+<p>Each event can be assigned a single function which will be
+called when the event is triggered. You can assign the function
+using the input box for the vent, and clicking the arrow button
+<img style="vertical-align:middle" src=
+"images/icon_openfunction.png"> will open the script editor for the
+function to be edited. You can also click the <b>Create New</b>
+button at the bottom to create a new script resource with
+"boilerplate" functions already defined and ready to be filled in.
+Note that you can change the function names to anything you require
+and do not have to use the predefined names, and you can also
+remove any function definitions that you don't need. It is
+important note that functions used for sequence events <b>cannot
+take any arguments</b>.</p>
+
+<p>Sequence events can also be added and edited using code. For
+more information please see <a href=
+"../../3_scripting/4_gml_reference/sequences/sequence%20events.html">
+here</a>.</p>
+</div>
+<br>
+<a name="sequence_moments" id="sequence_moments"></a> <label class=
+"collapse" for="10">Sequence Moments</label> <input id="10" type=
+"checkbox">
+<div class="index_list">
+<p>A sequence <b>moment</b> is a position on the timeline where the
+sequence can call a function. This is a <a href=
+"../../3_scripting/3_gml_overview/3_scripts.html">scripted
+function</a> that <b>must have no parameters</b> and when the
+moment (frame) given on the timeline is reached, this function will
+be called. To set a moment, you simply move the playhead to the
+required position and then click the <b>Add Moment</b> button, and
+in the dialog that opens you give the name of the function to
+call.<br>
+<br>
+<img class="center" src="images/editor_sequences_addmoment.gif"
+alt="Add A Moment To The Sequence"></p>
+
+<p><br>
+When adding a moment function, you can click the <img style=
+"vertical-align:middle" src="images/icon_goto_function.png"> button
+to go to the script with the specified function, or you can click
+the <img style="vertical-align:middle" src=
+"images/icon_newmomentfunction.png"> button to create a new script
+resource with an empty function ready for editing. You can also
+remove moment and the function call it contains by clicking the
+<img style="vertical-align:middle" src=
+"images/icon_removemoment.png"> button.</p>
+
+<p>Sequence moments can also be added and edited using code. For
+more information please see <a href=
+"../../3_scripting/4_gml_reference/sequences/sequence%20events.html">
+here</a>.</p>
+</div>
+<br>
+<a name="track_editor" id="track_editor"></a> <label class=
+"collapse" for="5">Track Panel</label> <input id="5" type=
+"checkbox">
+<div class="index_list">
+<p>The <b>Track Panel</b> is where each of the assets in your
+sequence is listed as a track, with each track having sub-tracks
+for any parameters that are being changed for the asset. You can
+click <img style="vertical-align:middle" src=
+"../../images/icon_lmb.png"> and drag on any asset track to change
+it's position above or below the other tracks (any assigned
+parameter tracks will move along with it), and you can use
+<img style="vertical-align:middle" src=
+"../../images/icon_ctrl.png"> / <img style="vertical-align:middle"
+src="../../images/icon_cmd.png"> + <img style=
+"vertical-align:middle" src="../../images/icon_lmb.png"> to select
+multiple tracks.</p>
+
+<p>You can create a track by dragging an asset from the Asset
+Browser (either a sprite, an object, a sound or a sequence) into
+the sequence canvas, or you can click the (+) icon at the bottom to
+add a new track and select the asset to use from the Asset Explorer
+window that opens. The new track will be created and the asset
+added at the current playhead position within the dope sheet
+timeline:<br>
+<br>
+<img class="center" src="images/editor_sequences_addtrack.gif" alt=
+"Add A New Asset Track"><br>
+<br></p>
+
+<p>The track editor has many other features that are discussed in
+full detail on the following page: <a href=
+"sequences/the%20track%20panel.html">The Track Panel</a>.</p>
+</div>
+<br>
+<a name="toolbox" id="toolbox"></a> <label class="collapse" for=
+"6">Toolbox</label> <input id="6" type="checkbox">
+<div class="index_list">
+<p>The Sequence Editor <b>toolbox</b> contains the different
+visualisation and setup options for the sequence being edited.</p>
+
+<ul>
+<li><b>Toggle Canvas Grid</b> <img style="vertical-align:middle"
+src="images/icon_canvasgrid.png">: This will toggle on/off the
+Sequence Editor canvas grid. This is a grid that <i>GameMaker
+Studio 2</i> draws over the preview canvas to divide it into
+sections, and by default is set to 32x32px in size. However if you
+click the Grid Menu icon <img style="vertical-align:middle" src=
+"images/icon_canvasoptions.png"> you will open the grid options:
+<img class="center" src="images/editor_sequences_gridcontrols.png"
+alt="Sequence Editor Grid Options"> These options permit you to set
+the grid colour and alpha, as well as the cell values for the grid
+along the X and Y axis. You also have an option to enable or
+disable grid snapping here (disabled by default). You can use the
+keyboard shortcuts "<tt><b>G</b></tt>" and <img style=
+"vertical-align:middle" src="../../images/icon_shift.png"> +
+"<tt><b>G</b></tt>" to toggle the grid visibility and grid snapping
+respectively.<br>
+<br></li>
+
+<li><b>Canvas Zoom Controls</b> <img style="vertical-align:middle"
+src="images/icon_canvaszoom.png">: These buttons control the
+current canvas zoom level. You can zoom in or out and clicking the
+<img style="vertical-align:middle" src=
+"images/icon_zoomequals.png"> button will reset the canvas to be
+1:1 with the room being edited. You can also click the Window Fit
+button <img style="vertical-align:middle" src=
+"images/icon_canvasfit.png"> to make the entire sequence canvas fit
+within the current editor workspace (this will zoom in/out as
+appropriate to make it fit). Note that you can also zoom in and out
+using the <img style="vertical-align:middle" src=
+"../../images/icon_ctrl.png">/<img style="vertical-align:middle"
+src="../../images/icon_cmd.png"> and the Mouse Wheel <img style=
+"vertical-align:middle" src="../../images/icon_mmb.png">, and
+pressing <img style="vertical-align:middle" src=
+"../../images/icon_ctrl.png">/<img style="vertical-align:middle"
+src="../../images/icon_cmd.png"> + <b><tt>Enter</tt></b> will set
+the room canvas to be 1:1 with the room settings.<br>
+<br></li>
+
+<li><b>Toggle Widgets</b> <img style="vertical-align:middle" src=
+"images/icon_togglegizmos.png">: Clicking this will enable or
+disable the different widgets visible in the canvas. When enabled
+you will see all the widgets associated with the different assets
+and the canvas itself, and when disabled these will not be shown,
+giving a clearer view of how the sequence looks. Note that this is
+enabled by default, and there is a menu available from the right
+options button <img style="vertical-align:middle" src=
+"images/icon_canvasoptions.png"> where you can filter what is
+visible without having to disable all the different widgets
+together. A complete list of these filter options and an
+explanation of what they do can be found <a href=
+"sequences/the%20sequence%20canvas.html">here</a>.<br>
+<br></li>
+
+<li><b>Toggle Transform Widget Mode</b> <img style=
+"vertical-align:middle" src="images/icon_transformwidget.png">:
+Each asset added to a sequence has a <b>transform widget</b> at its
+origin:<br>
+<br>
+<img class="center" src=
+"images/editor_sequences_transformwidget.gif" alt=
+"The transform widget for an asset"><br>
+<br>
+This widget can control how the asset is scaled or rotated, as well
+as control its position and the position of the origin of the
+asset, however it only shows one of these options at a time.
+Clicking this button will switch between the different widget types
+or you can click on the options menu <img style=
+"vertical-align:middle" src="images/icon_canvasoptions.png"> to
+directly select the type of control action you want the transform
+widget to perform.<br>
+<br></li>
+
+<li><b>Toggle Canvas Frame</b> <img style="vertical-align:middle"
+src="images/icon_togglecanvas.png">: This button can be used to
+toggle the canvas frame on or off (it is on by default). The canvas
+frame is simply a guide that is used to judge where elements are
+placed in sequence canvas and any elements outside of the frame
+will not be rendered. This button also has the following options
+menu <img style="vertical-align:middle" src=
+"images/icon_canvasoptions.png">: <img class="center" src=
+"images/editor_sequences_canvascontrols.png" alt=
+"Sequence Editor Canvas Options"> Here you can set the canvas frame
+toggle as well as the size of the canvas. You also have the
+possibility of setting a <b>reference image</b>, which is an image
+that you select from your computer (it is not imported into the
+project) to be used as a background reference for the sequence.
+This image is <i>only</i> visible in the Sequence Editor itself and
+will <b>not</b> be rendered when the sequence is used in a project.
+If you add a reference image you can also set the opacity that it's
+drawn at and offset its position within the canvas frame.<br>
+<br></li>
+</ul>
+</div>
+<br>
+<a name="sequence_controls" id="sequence_controls"></a>
+<label class="collapse" for="7">Sequence Controls</label>
+<input id="7" type="checkbox">
+<div class="index_list">
+<p>This bar has the various sequence playback controls: <img class=
+"center" src="images/editor_sequences_playbackcontrols.png" alt=
+"Sequence Editor Playback Controls"></p>
+
+<ul>
+<li><b>Playback Speed</b>: this is the playback speed of the
+sequence in frames (steps) per second.<br>
+<br></li>
+
+<li><b>Playhead Position</b>: this is the current playhead
+position, and can be shown in time (h:m:s) or frames (f).<br>
+<br></li>
+
+<li><b>Time Display Options</b>: here you can set whether to
+display the sequence times in hours, minutes and seconds (h:m:s) or
+frames (f).<br>
+<br></li>
+
+<li><b>Broadcast Message</b>: Clicking this permits you to add a
+<b>broadcast message</b> at the current playhead position (this is
+explained in more detail earlier on this page).<br>
+<br></li>
+
+<li><b>Add Moment</b>: Clicking this permits you to add a sequence
+<b>moment</b> at the current playhead position (this is explained
+in more detail earlier on this page).<br>
+<br></li>
+
+<li><b>Playback Controls</b>: with these buttons you can start and
+stop the sequence preview, as well as move the playhead to the
+start or the end. There is also a button to set whether the
+sequence should loop or not, and whether the sequence should
+"ping-pong" or repeat when looping. Like with the Sprite and Image
+editor, this control will not affect the way the sequence plays in
+the room when the project is compiled, and is purely a visual guide
+for previewing the sequence in the editor.<br>
+<br></li>
+
+<li><b>Sequence Length</b>: this displays the total possible length
+of the sequence in frames (f) or in time (m:h:s). Note that the
+sequence may not run to this length if you have set the clip region
+to be smaller.</li>
+</ul>
+</div>
+<br>
+<a name="dope_sheet" id="dope_sheet"></a> <label class="collapse"
+for="8">Dope Sheet</label> <input id="8" type="checkbox">
+<div class="index_list">
+<p>The <b>Dope Sheet</b> is where all the asset and parameter keys
+for each track are shown. You can click <img style=
+"vertical-align:middle" src="../../images/icon_lmb.png"> and drag
+keys left or right to position them within the dope sheet timeline,
+and you can also click <img style="vertical-align:middle" src=
+"../../images/icon_lmb.png"> on the right edge of an asset key to
+change it's length. Note that for sprites and objects, setting the
+length to be longer than the animation will cause the animation to
+loop over the extra frames. The dope sheet also has controls for
+setting the start and end of the <b>clip region</b> for the
+sequence, and you can click <img style="vertical-align:middle" src=
+"../../images/icon_lmb.png"> anywhere to set the playhead to that
+position. For more information on how to use the dope sheet, please
+see the page <a href=
+"sequences/using%20the%20dope%20sheet.html">Using The Dope
+Sheet</a>.</p>
+</div>
+<br></blockquote>
+
+<p>Due to the initial complexity of the sequence editor, we have
+only given a brief overview of the features available here, but we
+have additional pages listed below that go into more depth about
+its features and how they can be used:</p>
+
+<ul>
+<li><a href="sequences/the%20sequence%20canvas.html">The Sequence
+Canvas</a>
+</li>
+
+<li><a href="sequences/the%20track%20panel.html">The Track
+Panel</a>
+</li>
+
+<li><a href="sequences/using%20the%20dope%20sheet.html">Using The
+Dope Sheet</a>
+</li>
+
+<li><a href="sequences/broadcast%20messages.html">Broadcast
+Messages</a>
+</li>
+</ul>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href="index.html">Editors
+Index</a></div>
+
+<div style="float:right">Next: <a href="shaders.html">The Shader
+Editor</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

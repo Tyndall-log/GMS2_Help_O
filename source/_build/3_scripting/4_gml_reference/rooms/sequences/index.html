@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>Sequences Layer Functions</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<link rel="stylesheet" href="../../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/3_scripting/4_gml_reference/rooms/sequences/index.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Frooms%2Fsequences%2Findex.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../../index.html?page=source%2F_build%2F3_scripting%2F4_gml_reference%2Frooms%2Fsequences%2Findex.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>Sequences Layer Functions</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p>In this section we have the functions that are used for adding,
+removing and editing how <a href=
+"../../../../2_interface/1_editors/sequences.html">Sequences</a>
+behave in a game room in relation to the <i>layer</i> they are on.
+It should be noted that sequences are similar to objects, in that
+when one is created on a layer in a room, it is considered an
+<i>instance</i> of the main sequence <i>object</i> from the Asset
+Browser. So, when you add a sequence to a layer in a room, you are
+creating an <i>instance</i> of the base sequence object, and this
+sequence instance is added as an <i>element</i> within a room
+layer. The sequence instance is what controls things like playback
+speed and direction, and will itself contain another sequence data
+<i>struct</i> which is what contains the actual sequence track
+data. This is important, as the functions listed below will
+reference the sequence element ID (the ID of the sequence <i>on the
+layer</i>) as well as the sequence instance ID (the actual ID of
+the sequence that is being referenced by the element) and the
+sequence data <a href=
+"../../../3_gml_overview/11_structs.html">struct</a> (which
+contains all the sequence data).</p>
+
+<p>Below is a list of all the functions that can be used for
+editing sequences that have been added to an <b>asset
+layer</b>:</p>
+
+<div class="index_list">
+<ul>
+<li><a href="layer_sequence_exists.html">layer_sequence_exists</a>
+</li>
+
+<li><a href="layer_sequence_create.html">layer_sequence_create</a>
+</li>
+
+<li><a href=
+"layer_sequence_destroy.html">layer_sequence_destroy</a>
+</li>
+
+<li><a href="layer_sequence_x.html">layer_sequence_x</a>
+</li>
+
+<li><a href="layer_sequence_y.html">layer_sequence_y</a>
+</li>
+
+<li><a href=
+"layer_sequence_headpos.html">layer_sequence_headpos</a>
+</li>
+
+<li><a href=
+"layer_sequence_headdir.html">layer_sequence_headdir</a>
+</li>
+
+<li><a href="layer_sequence_pause.html">layer_sequence_pause</a>
+</li>
+
+<li><a href="layer_sequence_play.html">layer_sequence_play</a>
+</li>
+
+<li><a href=
+"layer_sequence_speedscale.html">layer_sequence_speedscale</a>
+</li>
+
+<li><a href="layer_sequence_get_x.html">layer_sequence_get_x</a>
+</li>
+
+<li><a href="layer_sequence_get_y.html">layer_sequence_get_y</a>
+</li>
+
+<li><a href=
+"layer_sequence_get_headpos.html">layer_sequence_get_headpos</a>
+</li>
+
+<li><a href=
+"layer_sequence_get_headdir.html">layer_sequence_get_headdir</a>
+</li>
+
+<li><a href=
+"layer_sequence_get_speedscale.html">layer_sequence_get_speedscale</a>
+</li>
+
+<li><a href=
+"layer_sequence_get_length.html">layer_sequence_get_length</a>
+</li>
+
+<li><a href=
+"layer_sequence_get_instance.html">layer_sequence_get_instance</a>
+</li>
+
+<li><a href=
+"layer_sequence_get_sequence.html">layer_sequence_get_sequence</a>
+</li>
+
+<li><a href=
+"layer_sequence_is_paused.html">layer_sequence_is_paused</a>
+</li>
+
+<li><a href=
+"layer_sequence_is_finished.html">layer_sequence_is_finished</a>
+</li>
+</ul>
+</div>
+
+<p>There are also additional functions available for dealing with
+the contents of sequences and for defining your own. You can find a
+complete list of these functions in the following section:</p>
+
+<div class="index_list">
+<ul>
+<li><a href="../../sequences/index.html">Sequences</a>
+</li>
+</ul>
+</div>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href=
+"../index.html">Rooms</a></div>
+
+<div style="float:right">Next: <a href=
+"../general/index.html">General Room Functions And
+Variables</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

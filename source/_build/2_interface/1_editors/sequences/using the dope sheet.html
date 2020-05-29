@@ -1,0 +1,514 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>The Dope Sheet</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/2_interface/1_editors/sequences/using the dope sheet.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences%2Fusing%20the%20dope%20sheet.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F2_interface%2F1_editors%2Fsequences%2Fusing%20the%20dope%20sheet.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>The Dope Sheet</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p><img class="center" src="images/dopesheet_editor.png" alt=
+"The Dope Sheet Editor">
+</p>
+
+<p>The <b>Dope Sheet</b> is where the data from the different
+tracks added to the sequence is displayed over time, giving you not
+just an overview of each track, but also a means to edit the
+position of them as well as the timings for changes in parameters,
+etc...</p>
+
+<p>When you add a new asset to a sequence, a track will be created
+in the <a href="the%20track%20panel.html">Track Panel</a> and a
+<b>track Key</b> will be added to the dope sheet at the current
+playhead position. This key will reflect the play length of the
+asset in frames:<br>
+<br>
+<img class="center" src="images/dope_sheet_add_asset.gif" alt=
+"Add An Asset To The Dope Sheet"></p>
+
+<p><br>
+The asset key itself can then be edited by moving the mouse to
+either the start or the end of the key frame and when the cursor
+changes clicking <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> and dragging. This will either move
+the start of the key or the end of the key, depending on which you
+have selected, but both will affect the length of the key. Note
+that you can also change an asset key position by simply clicking
+anywhere on it and dragging left or right:<br>
+<br>
+<img class="center" src="images/dope_sheet_move_key.gif" alt=
+"Move Or Change An Asset Key In The Dope Sheet"></p>
+
+<p><br>
+Other than asset keys, the dope sheet will also show <b>parameter
+keys</b>. Parameter keys are initially "points" in time where you
+signal a change to a property for the asset they are related to,
+and the sequence will use the value for that point to change the
+asset. How this is done will depend on whether you have set the
+keys to <i>interpolate</i> or not in the Track Panel. Parameter
+keys, like track keys, can be moved by clicking <img style=
+"vertical-align:middle" src="../../../images/icon_lmb.png"> and
+dragging them along the timeline to a new position, and you can
+also extend the key to more than a single frame using the
+<img style="vertical-align:middle" src=
+"../../../images/icon_alt.png"> key at the same time as dragging
+(the cursor will change to show this). This means that you can hold
+key values over time before continuing with any interpolation to
+the next key:<br>
+<br>
+<img class="center" src="images/dope_sheet_parameter_keys.gif" alt=
+"Move Or Change A Parameter Key In The Dope Sheet"></p>
+
+<p><br>
+</p>
+
+<p>When working with the dope sheet note that the usual keyboard
+shortcuts can be used, ie: <img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> and the
+left mouse button <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> to select one or more keys in any
+order, and to cut, copy and paste tracks you can use the
+<img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> + "X",
+<img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> + "C"
+and <img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> + "V"
+key combinations. There are also different options for keys
+available from the right mouse button <img style=
+"vertical-align:middle" src="../../../images/icon_rmb.png"> menu,
+which are detailed further down this page. Note that when pasting
+keys into the dope sheet using these commands, the keys will be
+pasted at the current position of the playhead.</p>
+
+<p>That's the basics of using the dope sheet, but below we go into
+a bit more detail on what each of the different sections are for
+and how to use them:</p>
+
+<p><br>
+</p>
+
+<blockquote><a name="region_markers" id="region_markers"></a>
+<label class="collapse" for="1">Region Start / Region End</label>
+<input id="1" type="checkbox">
+<div class="index_list">
+<p>These markers are the <b>clip region</b> start and end points.
+These can be used to set a specific section of the sequence to be
+shown in the room when the game is run, and will also be used as
+the loop points when previewing the sequence in the editor. These
+points cannot be greater or less than the total sequence length as
+set in the Sequence Editor <a href="../sequences.html">Sequence
+Controls</a>. To change the position of a clip region marker,
+simply click <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> and drag them to the desired
+frame.</p>
+</div>
+<br>
+<a name="zoom_controls" id="zoom_controls"></a> <label class=
+"collapse" for="2">Zoom Controls</label> <input id="2" type=
+"checkbox">
+<div class="index_list">
+<p>This bar is used to show the current zoom of the dope sheet and
+it can also be used to change this zoom level. You can click
+<img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> on the end widgets and then drag to
+change the level of zoom:<br>
+<br>
+<img class="center" src="images/dope_sheet_zoom.gif" alt=
+"Dope Sheet Zoom Controls"><br>
+<br>
+Note too that you can zoom the dope sheet in or out using the
+<img style="vertical-align:middle" src=
+"../../../images/icon_ctrl.png"> / <img style=
+"vertical-align:middle" src="../../../images/icon_cmd.png"> key and
+the mouse wheel <img style="vertical-align:middle" src=
+"../../../images/icon_mmb.png">.</p>
+</div>
+<br>
+<a name="asset_tracks" id="asset_tracks"></a> <label class=
+"collapse" for="3">Asset Tracks</label> <input id="3" type=
+"checkbox">
+<div class="index_list">
+<p>Asset tracks are represented on the dope sheet as "keys", which
+are coloured bars representing the position of the asset and the
+length of time it's active in the sequence. As mentioned above
+these can be moved around and lengthened and shortened as required.
+Note that an asset track key that is longer than the asset itself
+in duration - for example a sound might last 5 frames and you
+stretch its key to 15 frames - will be repeated for the entire
+duration of its key. Asset tracks and keys can be copied and pasted
+using the standard keyboard shortcuts or further modified using the
+right mouse button <img style="vertical-align:middle" src=
+"../../../images/icon_rmb.png"> menu options (explained further
+down this page).</p>
+
+<p>If you delete an asset track key, this does <i>not</i> delete
+the track itself, nor does it delete any track parameters that have
+been added, it simply deletes the asset key from the dope sheet. If
+there are no further keys for this track, you can re-add them by
+dragging an asset from the Asset Browser into the dope sheet and it
+will be added as a new key, but note that you cannot add an asset
+that is distinct to the original asset (ie: if you delete a a key
+for a sprite, you cannot then add a sound asset into that key
+position).</p>
+</div>
+<br>
+<a name="parameter_tracks" id="parameter_tracks"></a> <label class=
+"collapse" for="4">Parameter Tracks</label> <input id="4" type=
+"checkbox">
+<div class="index_list">
+<p>Parameter tracks are represented on the dope sheet as coloured
+bars underneath the main asset track they belong to. The bars of
+colour themselves cannot be edited and are purely a visual
+representation of the track that the parameter keys are being
+applied to.</p>
+</div>
+<br>
+<a name="playhead" id="playhead"></a> <label class="collapse" for=
+"5">The Playhead</label> <input id="5" type="checkbox">
+<div class="index_list">
+<p>The playhead is the position in time at which the timeline is
+currently being previewed. This position is used when dropping
+assets into the Sequence Canvas to set the position where they have
+been added as well as a number of things, like adding parameters,
+or splitting keys. When you press "play" on the sequence editor
+canvas, the playhead will move through the sequence, and you can
+also click <img style="vertical-align:middle" src=
+"../../../images/icon_lmb.png"> on it and drag it to move to a
+specific frame within the sequence or to "scrub" over multiple
+frames and get a quick preview without playing the whole thing.</p>
+</div>
+<br>
+<a name="parameter_keys" id="parameter_keys"></a> <label class=
+"collapse" for="6">Parameter Keys</label> <input id="6" type=
+"checkbox">
+<div class="index_list">
+<p>Parameter keys are the "points" shown on a parameter track
+wherever a change in that parameter has occurred. These points can
+be moved as required and expanded so that they last more than one
+frame (as explained further up this page), and you can edit their
+value either from the Track Panel, or by changing the asset on the
+canvas (if it is a scale, position or rotation parameter). Note
+that all parameter track keys will also be reflected as a point on
+the key track that the parameter belongs to, but these points
+cannot be edited and are there as an informational aid when you
+have collapsed the different parameter tracks in the track
+editor.</p>
+</div>
+<br></blockquote>
+
+<p><br>
+<br>
+<br>
+</p>
+
+<h2>Animation Curves</h2>
+
+<p><br>
+</p>
+
+<p>An important feature of the dope sheet is the ability to assign
+<a href="../animation_curves.html">Animation Curves</a> to
+parameter tracks within the sequence. When doing this, it is very
+important that you create your Animation Curve assets with the
+correct number of channels (curves) for the parameter track you
+want to target. This means that you will need:</p>
+
+<ul>
+<li>4 channels for <b>colour</b> (Channels should be in ARGB order,
+and the range for each should be 0 to 255)</li>
+
+<li>2 channels for <b>position</b>, <b>scale</b> and
+<b>origin</b></li>
+
+<li>1 channel for <b>rotation</b>, <b>image index</b> and <b>image
+speed</b></li>
+
+<li>1 channel for <b>pitch</b> and <b>volume</b> (curve values
+should be between 0 and 1)</li>
+</ul>
+
+<p>There are two types of animation curves that can be used in your
+sequences:</p>
+
+<ul>
+<li><b>Embedded Curve</b> - An embedded animation curve is a unique
+set of curve data assigned to a specific track in the track panel.
+An embedded curve can be edited like any other animation curve, but
+it will not appear in the asset browser, as it is <i>not</i> a
+stand-alone asset but instead linked only to the track it is
+applied to.<br>
+<br></li>
+
+<li><b>Asset Curve</b> - An asset animation curve is one which has
+been created in the asset browser. These types of curves can be
+used on multiple different tracks and any changes to the animation
+curve asset will be propagated across all tracks that use it.</li>
+</ul>
+
+<p>To add an animation curve asset to a track, you must first give
+the track the required parameter track, for example, a position or
+a rotation parameter track. Once that has been added you can use
+the right mouse button <img style="vertical-align:middle" src=
+"../../../images/icon_rmb.png"> menu option <b>Set To External Anim
+Curve</b> to open the Asset Explorer and select the required curve
+from the ones presented to you. Note that only those curve assets
+with the appropriate number of channels for the parameter track
+being used will be shown.<br>
+<br>
+<img class="center" src="images/dope_sheet_add_animcurve.gif" alt=
+"Add An Animation Curve To A Parameter Track"></p>
+
+<p><br>
+Once you have added an animation curve to a parameter track, it can
+then be edited by simply double clicking <img style=
+"vertical-align:middle" src="../../../images/icon_lmb.png"> on it,
+which will open the <a href="../animation_curves.html">Animation
+Curve Editor</a> for the curve. You can also convert an animation
+curve into an <i>embedded</i> curve using the right mouse button
+<img style="vertical-align:middle" src=
+"../../../images/icon_rmb.png"> menu option <b>Convert To Embedded
+Anim Curve</b>. This will disassociate the curve from the asset
+used, and link it <i>only</i> to the assigned asset track. You can
+still edit the curve by double clicking <img style=
+"vertical-align:middle" src="../../../images/icon_lmb.png"> on it,
+but any edits will only be assigned to the curve on the track and
+nowhere else.</p>
+
+<p>Conversely, you can convert an embedded animation curve into an
+animation curve asset using the right mouse button <img style=
+"vertical-align:middle" src="../../../images/icon_rmb.png"> menu
+option <b>Export Embedded Animation Curve</b>. This will convert
+the embedded curve into a new asset which can then be edited as
+normal as well as applied to other parameter tracks if
+required.</p>
+
+<p>Animation curves can also be converted into keyframes. This
+option is again available from the right mouse button <img style=
+"vertical-align:middle" src="../../../images/icon_rmb.png"> menu,
+<b>Convert To Keys</b>:<br>
+<br>
+<img class="center" src="images/dope_sheet_convert_animcurve.gif"
+alt="Convert An Animation Curve To Keyframes"></p>
+
+<p><br>
+It is important to note, however. that there are a couple of
+caveats associated with doing this:</p>
+
+<ul>
+<li>Keyframes cannot be "between" frames, and so some curve values
+will need to be rounded to the nearest frame, which in turn will
+change the way the paramter track behaves.<br>
+<br></li>
+
+<li>If the animation curve uses catmull-rom interpolation, this
+will be lost and the interpolation between keyframes will be set to
+linear interpolation.</li>
+</ul>
+
+<p>You can also convert keyframes into an embedded animation curve
+from the right mouse button <img style="vertical-align:middle" src=
+"../../../images/icon_rmb.png"> menu using the option <b>Convert To
+Embedded Anim Curve</b>:<br>
+<br>
+<img class="center" src="images/dope_sheet_convert_keyframes.gif"
+alt="Convert Keyframes To An Animation Curve"></p>
+
+<p><br>
+<br>
+<br>
+</p>
+
+<h2>RMB Menu</h2>
+
+<p><br>
+</p>
+
+<p>Clicking the right mouse button <img style=
+"vertical-align:middle" src="../../../images/icon_rmb.png"> within
+the dope sheet on an <b>asset track</b> will bring up the following
+menu options (note some options may not be visible depending on
+whether the part of the track clicked has a key or not):
+<img class="center" src="images/dope_sheet_rmb.png" alt=
+"Dope Sheet Right Mouse Button Menu For Asset Tracks"></p>
+
+<ul>
+<li><b>Cut</b>, <b>Copy</b>, and <b>Paste</b> key(s): These options
+permit you to cut/copy/paste asset. Note that any keys pasted into
+the dope sheet using these options will be pasted at the position
+of the playhead.<br>
+<br></li>
+
+<li><b>Paste Key(s) In Place</b>: When you use this option, the
+copied or cut key(s) will be pasted at the position where the right
+mouse button was clicked, and <i>not</i> at the playhead
+position.<br>
+<br></li>
+
+<li><b>Delete Key(s)</b>: Selecting this will be delete the
+currently selected key or keys.<br>
+<br></li>
+
+<li><b>Copy To Start</b>: This option will copy the selected key(s)
+to the very start of the sequence (<i>not</i> the start of the clip
+region).<br>
+<br></li>
+
+<li><b>Copy To End</b>: This option will copy the selected key(s)
+to the very end of the sequence (<i>not</i> the end of the clip
+region).<br>
+<br></li>
+
+<li><b>Stretch Asset Key</b>: When you select this, the asset key
+selected will be stretched to the end of the sequence (<i>not</i>
+the end of the clip region).<br>
+<br></li>
+
+<li><b>Delete Asset Key</b>: When you use this, the asset key
+selected will be deleted and you can then add a new asset to the
+track by dragging it from the asset browser onto the dope sheet
+track that was deleted. This will create a new asset key which can
+then be edited, while maintaining any parameter tracks associated
+with the asset.<br>
+<br></li>
+</ul>
+
+<p>Clicking the right mouse button <img style=
+"vertical-align:middle" src="../../../images/icon_rmb.png"> within
+the dope sheet on a <b>parameter track</b> will bring up the
+following menu options (note some options may not be visible
+depending on whether the part of the track clicked has a key frame
+or not): <img class="center" src=
+"images/dope_sheet_rmb_parameter.png" alt=
+"Dope Sheet Right Mouse Button Menu For Parameter Tracks"></p>
+
+<ul>
+<li><b>Cut</b>, <b>Copy</b>, and <b>Paste</b> key(s): These options
+permit you to cut/copy/paste parameter keys. Note that any keys
+pasted into the dope sheet using these options will be pasted at
+the position of the playhead.<br>
+<br></li>
+
+<li><b>Paste Key(s) In Place</b>: When you use this option, the
+copied or cut keyframe(s) will be pasted at the position where the
+right mouse button was clicked, and <i>not</i> at the playhead
+position.<br>
+<br></li>
+
+<li><b>Delete Key(s)</b>: Selecting this will be delete the
+currently selected keyframe or keyframes.<br>
+<br></li>
+
+<li><b>Convert To Embedded Anim Curve</b>: This option will convert
+all the keyframes for the selected parameter track(s) into embedded
+animation curves (see the section on Animation Curves - above - for
+more information).<br>
+<br></li>
+
+<li><b>Set To External Anim Curve</b>: This option permits you to
+assign an Animation Curve asset to the parameter track (see the
+section on Animation Curves - above - for more information).<br>
+<br></li>
+
+<li><b>Convert To Keys</b>: With this option you can convert an
+animation curve to individual keyframes. Note that if the curve has
+used catmull-rom interpolation this will be lost and the keyframes
+will use linear interpolation between the points on the curve
+instead, and also note that keys generated from an animation curve
+<b>must fall on a frame</b>. This means that any curve with points
+that are between frames will be placed at the nearest integer frame
+value when converted into keys, potentially changing the behaviour
+of the curve.<br>
+<br></li>
+
+<li><b>Export Embedded Anim Curve</b>: This option lets you take an
+embedded animation curve and convert it into an Animation Curve
+asset, which will be shown in the Asset Browser and can then be
+used elsewhere.<br>
+<br></li>
+
+<li><b>Copy To Start</b>: This option will copy the selected
+keyframe(s) to the very start of the sequence (<i>not</i> the start
+of the clip region).<br>
+<br></li>
+
+<li><b>Copy To End</b>: This option will copy the selected
+keyframe(s) to the very end of the sequence (<i>not</i> the end of
+the clip region).<br>
+<br></li>
+
+<li><b>Stretch Parameter Key</b>: When you select this, the asset
+key selected will be stretched to the end of the sequence
+(<i>not</i> the end of the clip region). A stretched parameter key
+means that it will maintain it's value for as many frames as it's
+stretched over.<br>
+<br></li>
+
+<li><b>Delete Parameter Key</b>: When you use this, the parameter
+keyframe(s) selected will be deleted.<br>
+<br></li>
+</ul>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href="../sequences.html">The
+Sequences Editor</a></div>
+
+<div style="float:right">Next: <a href=
+"broadcast%20messages.html">Broadcast Messages</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>

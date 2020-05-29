@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="keywords" content="online documentation, web online help, web help, chm2web" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="generator" content="chm2web Pro 2.85 (unicode)" />
+<title>Try / Catch / Finally</title>
+<meta http-equiv="X-UA-Compatible" content="IE=9">
+<link rel="stylesheet" href="../../../../../files/helpindex.css"
+type="text/css">
+<link rel="stylesheet" href="../../../../../default.css" type=
+"text/css">
+
+<script type="text/JavaScript" src="../../../../../files/supply.js"></script>
+<script type="text/JavaScript">
+chmtop.c2wtopf.pageid = "_build/3_scripting/3_gml_overview/language_features/try_catch.html";
+</script>
+
+</head>
+<body><script type="text/JavaScript"> 
+if (window.name != "content") 
+  document.write(" <table width=\"100%\" bgcolor=\"#e1e1e1\"cellspacing=\"2\" cellpadding=\"0\" style=\"border-collapse: collapse; font-family: sans-serif; font-size: 14px; color: #000000; text-decoration: none;  \"> <tr> <td align=\"center\" style=\"border-bottom: 2px solid gray\" > <br>&nbsp;Click <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F3_gml_overview%2Flanguage_features%2Ftry_catch.html\">here</a> to show toolbars of the Web Online Help System: <a href=\"../../../../../index.html?page=source%2F_build%2F3_scripting%2F3_gml_overview%2Flanguage_features%2Ftry_catch.html\">show toolbars</a><br>&nbsp;</td></tr></table><br> "); 
+</script>
+<!-- !chm2web! -->
+
+<script type="text/JavaScript">
+ if( typeof(chmtop.helpStyle) != 'undefined' ) { var linkNodes = document.getElementsByTagName("link");  for( var i=0; i < linkNodes.length; ++i ) { var link = linkNodes[i];    if( link.href.endsWith("default.css")) {    var style = link.href.replace("default.css", chmtop.helpStyle); document.write('<link id="newstyleLink" rel="stylesheet" href=' + style + ' type="text/css">');    break; } } } 
+</script>
+<h2>Try / Catch / Finally</h2>
+
+<div class="body-scroll">
+<p><br>
+</p>
+
+<p>The <tt>try</tt>, <tt>catch</tt> and <tt>finally</tt> statements
+can be used in your game for error checking and permit you to test
+out blocks of code and control what happens if any runtime
+exceptions occur. Using these will prevent the exception ending the
+game and showing the standard error message to the user, but this
+means that you will have to handle what happens next in this case,
+saving out log files - for example - and ending the game gracefully
+(note that if you choose to do nothing, your game may become
+unstable and not perform correctly).</p>
+
+<p>At it's most basic the <tt>try</tt> syntax is as follows:</p>
+
+<p class="code">try<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement1&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement2&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;etc...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+However, having a <tt>try</tt> without anything to actually handle
+any exceptions the code may produce will not be very helpful, so we
+usually pair it with a <tt>catch</tt>, with the following
+syntax:</p>
+
+<p class="code">try<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement1&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement2&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;etc...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+catch(&lt;variable&gt;)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement1&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement2&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;etc...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+What <tt>catch</tt> does is permit you to run extra code supplied
+in the following block when an exception from the previous
+<tt>try</tt> has been caught. If this is a runtime exception, then
+the supplied variable can be used to access a <a href=
+"../9_data_types.html">struct</a> which will contain the following
+information:</p>
+
+<p class="code">{<br>
+message :
+"",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+a string that is a short message for this exception<br>
+longMessage :
+"",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+a string that is a longer message for this exception<br>
+script :
+"",&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//
+a string that describes where the exception came from<br>
+stacktrace : [ "", "" ],&nbsp;&nbsp;&nbsp;&nbsp;// an array of
+strings that is the stack frame the exception was generated<br>
+}<br></p>
+
+<p><br>
+A simple example of use is shown below:</p>
+
+<p class="code">var a = 0, b = 0, c = 0;<br>
+try<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;c = a div b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+catch( _exception)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.message);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.longMessage);<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.script);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.stacktrace);<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+It may be that you want to run some code regardless of whether an
+exception was thrown or not, and so for that you can add in a
+<tt>finally</tt> block. The finally syntax is:</p>
+
+<p class="code">finally<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement1&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;statement2&gt;;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;etc...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+It is worth noting that you can have any combination of these
+together, ie: <tt>try</tt> / <tt>finally</tt>, <tt>try</tt> /
+<tt>catch</tt> or <tt>try</tt> / <tt>catch</tt> / <tt>finally</tt>,
+and that within the <tt>finally</tt> block you cannot use <a href=
+"break.html"><tt>break</tt></a>, <a href=
+"continue.html"><tt>continue</tt></a>, <a href=
+"exit.html"><tt>exit</tt></a> or <a href=
+"return.html"><tt>return</tt></a> statements as they have no
+meaning in this context and the compiler will generate an error if
+they are used.</p>
+
+<p>Finally, you can also nest various <tt>try</tt> / <tt>catch</tt>
+/ <tt>finally</tt> within each other, for example:</p>
+
+<p class="code">var a = 0, b = 0, c = 0;<br>
+try<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;try<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c = a div b;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;finally<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+catch(_exception)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;++a;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.message);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.longMessage);<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.script);<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message(_exception.stacktrace);<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+finally<br>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;show_debug_message("a = " + string(a));<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br></p>
+
+<p><br>
+It is worth noting that you can take over the default GML error
+message and use your own handler code by calling the function
+<a href=
+"../../4_gml_reference/miscellaneous/exception_unhandled_handler.html">
+<tt>exception_unhandled_handler()</tt></a>. This runtime function
+permits you to supply a custom method to use that will be called
+whenever any unhandled exceptions occur in your game.</p>
+
+<p><br>
+</p>
+</div>
+
+<div class="footer">
+<div class="buttons">
+<div class="clear">
+<div style="float:left">Back: <a href=
+"../15_language_features.html">Language Features</a></div>
+
+<div style="float:right">Next: <a href="throw.html">Throw</a></div>
+</div>
+</div>
+
+<h5>© Copyright YoYo Games Ltd. 2019 All Rights Reserved</h5>
+</div>
+<script type="text/javascript">
+   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');   ga('create', 'UA-2711665-14', 'auto');   ga('send', 'pageview'); 
+</script>
+
+<script type="text/JavaScript">
+var fe = FindFrame("toc", top);
+if ((fe != null) && (chmtop.c2wtopf.jstree != null)) {
+  if (chmtop.c2wtopf.FITEMS[chmtop.c2wtopf.pagenum] != chmtop.c2wtopf.pageid)
+    chmtop.c2wtopf.jstree.OpenTreeNode("source/" + chmtop.c2wtopf.pageid);
+}
+</script>
+</body>
+</html>
